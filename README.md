@@ -2,7 +2,7 @@
 
 ---
 
-![logo Unifatecie](favicon.png)
+![logo Unifatecie](./img-unifatecie.png)
 
 Bem-vindo ao repositório do meu curso de Engenharia da Computação na Unifatecie! Este espaço foi criado para documentar e compartilhar todo o meu desenvolvimento e progresso ao longo do curso.
 
