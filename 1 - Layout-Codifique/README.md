@@ -10,7 +10,7 @@ Bem-vindo ao projeto Layout-Codifique! Este projeto foi criado para explorar e d
 
 <a href="https://WallCod.github.io/Layout-Codifique/index.html" target="_blank">Clique aqui</a> para acessar o site.
 
-<a href="https://github.com/WallCod/Layout-Codifique" target="_blank">Clique aqui</a> para acessar o repósitorio.
+<a href="https://github.com/WallCod/Layout-Codifique" target="_blank">Clique aqui</a> para acessar o repositório.
 
 ---
 
