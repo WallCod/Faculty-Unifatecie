@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 3</title>
+</head>
+<body>
+
+    <h2>JavaScript - Exemplo 3</h2>
+    <hr>
+    <p>Digite sua idade atual:</p>
+    <input id="idade" value="0"/>
+    <p>Digite seu sexo (M ou F):</p>
+    <input id="sexo" value="F"/>
+    <br>
+    <button onclick="funcao()">Clique</button>
+    <p id="ex3"></p>
+
+    <script>
+        function funcao() {
+            let idade = document.getElementById("idade").value;
+            let sexo = document.getElementById("sexo").value;
+            let situacao = (idade >= 18 && sexo == "F") ? "Aprovado":"Reprovado";
+            document.getElementById("ex3").innerHTML = situacao + " na etapa inicial.";
+        }
+    </script>
+    
+</body>
+</html>

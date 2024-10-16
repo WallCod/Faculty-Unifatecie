@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 3</title>
+</head>
+<body>
+
+    <h2> Javascript - Exemplo 3</h2>
+    <hr>
+    <p>Digite um valor para X:</p>
+    <input id="x" value="0"/>
+    <p>Digite um valor para Y:</p>
+    <input id="y" value="0"/> <br>
+    <button onclick="funcao(x, y)">Multiplique</button>
+    <p id="ex3"></p>
+
+    <script>
+        function funcao() {
+            let x = document.getElementById("x").value;
+            let y = document.getElementById("y").value;
+            document.getElementById("ex3").innerHTML = "Resultado =" + x * y;
+        }
+    </script>
+
+    
+</body>
+</html>

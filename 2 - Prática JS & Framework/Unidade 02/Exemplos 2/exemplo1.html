@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 1</title>
+</head>
+<body>
+    
+<h2>JavaScript - Exemplo 1</h2>
+<hr>
+<p>Digite um valor para a primeira nota:</p>
+<input id="n1" value="0"/>
+<p>Digite um valor para a segunda nota:</p>
+<input id="n2" value="0"/>
+<p>Digite um valor para a terceira nota:</p>
+<input id="n3" value="0"/>
+<br>
+<button onclick=" calculaMedia (n1, n2, n3)">Média</button>
+<p id="ex1"></p>
+
+<script>
+    function calculaMedia() {
+        let n1 = document.getElementById("n1").value;
+        let n2 = document.getElementById("n2").value;
+        let n3 = document.getElementById("n3").value;
+        document.getElementById("ex1").innerHTML = "Resultado" + (parseInt(n1) +
+        parseInt(n2) + parseInt(n3)) / 3;
+    }
+</script>
+
+</body>
+</html>
