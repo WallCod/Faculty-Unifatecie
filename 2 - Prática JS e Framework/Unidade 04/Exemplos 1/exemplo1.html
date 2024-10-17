@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exemplo 1</title>
+
+<!--Importa a biblioteca JQUERY-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"> </script>
+
+<!--Em resumo, este script faz com que:
+Ao clicar em qualquer botão, o elemento com o ID ex1 seja escondido.
+Ao clicar em qualquer parágrafo, o próprio parágrafo seja escondido.
+-->
+<script>
+    $(document).ready(function() {
+        $("button").click(function() {
+            $("#ex1").hide();
+        });
+        $("p").click(function() {
+            $(this).hide();
+        });
+    });
+</script>
+</head>
+<body>
+
+    <h2>JavaScript - Exemplo 1 </h2>
+    <hr>
+    <button>Clicar</button>
+    <p id="ex1">CLICAR</p>
+    
+</body>
+</html>

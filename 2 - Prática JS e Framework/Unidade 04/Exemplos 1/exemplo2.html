@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 2</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $("p").mouseenter(function() {
+                $(this).css("background-color", "LightBlue");
+                alert("Soma realizada!");
+            });
+            $("p").mouseleave(function() {
+                $(this).css("background-color", "white");
+                alert("Substração realizada!");
+            });
+            $("input").focus(function() {
+                $(this).css("background-color", "LightBlue");
+            });
+            $("input").blur(function() {
+                $(this).css("background-color", "white");
+            });
+        });
+    </script>
+
+</head>
+<body>
+
+    <h2>JavaScript - Exemplo 2</h2>
+    <hr>
+    Primeiro valor: <input id="v1" type="text" name="v1"> <br>
+    Segundo valor: <input id="v2" type="text" name="v2"> <br>
+    <button id="botao1" onclick="funcaoSoma()">Somar</button> <br>
+    <button id="botao2" onclick="funcaoSubtrair()">Subtrair</button> <br>
+    Soma: <p id="somar"></p>
+    Subtração: <p id="subtrair"></p>   
+    
+    <script>
+        function funcaoSoma() {
+            let x = document.getElementById("v1").value;
+            let y = document.getElementById("v2").value;
+            document.getElementById("somar").innerHTML = parseInt(x) + parseInt(y);
+        }
+        function funcaoSubtrair() {
+            let x = document.getElementById("v1").value;
+            let y = document.getElementById("v2").value;
+            document.getElementById("subtrair").innerHTML = parseInt(x) - parseInt(y);
+        }
+    </script>
+
+
+</body>
+</html>
+
+<!--
+
+O que essa pagina faz .
+
+HTML:
+
+Define uma página básica com um título e algumas caixas de texto (input) para que o usuário insira dois valores.
+
+Existem botões para realizar operações de soma e subtração.
+
+As <p> tags (<p id="somar"></p> e <p id="subtrair"></p>) são usadas para mostrar o resultado dessas operações.
+
+jQuery:
+
+Quando o documento está totalmente carregado, a função jQuery define eventos para os elementos p e input.
+
+Quando o mouse entra (mouseenter) em um parágrafo (p), a cor de fundo muda para LightBlue e uma alerta com a mensagem "Soma realizada!" é exibida.
+
+Quando o mouse sai (mouseleave) de um parágrafo (p), a cor de fundo volta a ser white e outra alerta com a mensagem "Substração realizada!" é exibida.
+
+Quando um input ganha foco (focus), a cor de fundo muda para LightBlue.
+
+Quando um input perde foco (blur), a cor de fundo volta a ser white.
+
+JavaScript:
+
+Define duas funções (funcaoSoma e funcaoSubtrair) para realizar operações aritméticas.
+
+funcaoSoma: Obtém os valores dos dois inputs, converte-os para inteiros e exibe a soma no parágrafo com id somar.
+
+funcaoSubtrair: Obtém os valores dos dois inputs, converte-os para inteiros e exibe a subtração no parágrafo com id subtrair.
+
+No geral, este script interage dinamicamente com o usuário, respondendo a eventos de mouse e de entrada de texto, enquanto realiza operações aritméticas simples com os valores inseridos.
+
+-->
