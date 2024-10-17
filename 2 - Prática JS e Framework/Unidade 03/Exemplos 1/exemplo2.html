@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 2</title>
+</head>
+<body>
+
+    <h2>JavaScript - Exemplo 2</h2>
+    <hr>
+
+    <b>Vogais:</b>
+    <p id="ex1"></p>
+    <b>Estados:</b>
+    <p id="ex2"></p>
+    <b>Países:</b>
+    <p id="ex3"></p>
+    <b>Adicionar país:</b>
+    <p id="ex4"></p>
+
+    <script>
+        const vogais = [
+            "A",
+            "E",
+            "I",
+            "O",
+            "U",
+        ]; vogais;
+        document.getElementById("ex1").innerHTML = vogais;
+        const estados = ["PR", "SC", "RS"];
+        document.getElementById("ex2").innerHTML = "<li> estados[0] <li> estados[1] <li>estados[2]";
+            const paises = ["Brasil", "Argentina", "Uruguai"];
+            document.getElementById("ex3").innerHTML = paises;
+            paises.push("Paraguai");
+            document.getElementById("ex4").innerHTML = paises;
+    </script>
+    
+</body>
+</html>

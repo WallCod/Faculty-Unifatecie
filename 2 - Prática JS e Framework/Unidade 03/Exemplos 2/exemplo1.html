@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 1</title>
+</head>
+<body>
+
+    <h2>JavaScript - Exemplo 1</h2>
+    <hr>
+    <p>Digite sua idade:</p>
+    <input id="idade" value="0"/>
+    <br>
+    <button onclick="funcao()">Verifica Idade</button>
+    <p id="ex1"></p>
+
+    <script>
+        function funcao () {
+            idade = document.getElementById("idade").value;
+            if (idade >= 18) {
+                mensagem = "Maior de idade e pode votar";
+            } else if (idade >= 16) {
+                mensagem = "Menor de idade, mas pode votar";
+            } else {
+                mensagem = "Menor de idade e não pode votar";
+            }
+            document.getElementById('ex1').innerHTML = mensagem;
+        }
+    </script>
+    
+</body>
+</html>

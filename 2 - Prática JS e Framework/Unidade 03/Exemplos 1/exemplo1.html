@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 1</title>
+</head>
+<body>
+
+    <h2>JavaScript - Exemplo 1</h2>
+    <hr>
+    <p>Digite seu nome completo:</p>
+    <input id="n1" value="XXXXXXXXX"/>
+    <p>Digite sua data de nascimento:</p>
+    <input id="n2" value="99/99/9999"/>
+    <p>Digite a cidade onde nasceu:</p>
+    <input id="n3" value="XXXXXXXXX">
+    <br>
+    <button onclick="funcao()">Gerar Dados</button>
+    <p id="ex1"></p>
+    <p id="ex2"></p>
+    <p id="ex3"></p>
+    <p id="ex4"></p>
+
+    <script>
+        function funcao() {
+            n1 = document.getElementById("n1").value;
+            document.getElementById('ex1').innerHTML = 'Quantidade de caracteres:' + n1.length;
+            n2 = document.getElementById("n2").value;
+            document.getElementById('ex2').innerHTML = 'Ano de nascimento:' + n2.substr(6,4); //Poderia ser usado (-4) com o mesmo resultado.
+            n3 = document.getElementById("n2").value;
+            document.getElementById('ex3').innerHTML = 'Nova cidade onde irá trabalhar:' + n2.replace (n3, "Paranavaí");
+            document.getElementById('ex4').innerHTML = 'Nome ajustado:' + n1.toUpperCase (n1); // toLowercase() mudaria todas as letras para minúsculas.
+
+        }
+    </script>
+    
+</body>
+</html>
