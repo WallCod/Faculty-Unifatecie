@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Básica</title>
+</head>
+<body>
+
+    <h2>JavaScript - Calculadora</h2>
+    <hr>
+    <p>VALOR:</p>
+    <input id="n1" value="">   
+    <p>VALOR:</p> 
+    <input id="n2" value="">
+    <br>
+    <button onclick="document.getElementById('ex1').innerHTML = calcula('+')">+</button>
+    <button onclick="document.getElementById('ex1').innerHTML = calcula('-')">-</button>
+    <button onclick="document.getElementById('ex1').innerHTML = calcula('*')">*</button>
+    <button onclick="document.getElementById('ex1').innerHTML = calcula('/')">/</button>
+    <p>RESULTADO:</p>
+    <input id="ex1" value="0">
+
+    <script>
+        function calcula(op) {
+            n1 = document.getElementById("n1").value;
+            n2 = document.getElementById("n2").value;
+            if(op == "+") {
+                document.getElementById('ex1').value = parseInt(n1) + parseInt(n2);
+            } else if (op == "-") {
+                document.getElementById('ex1').value = parseInt(n1) - parseInt(n2);
+            }else if (op == "*") {
+                document.getElementById('ex1').value = parseInt(n1) * parseInt(n2);
+            }else if (op == "/") {
+                document.getElementById('ex1').value = parseInt(n1) / parseInt(n2);
+            }
+        }
+    </script>
+
+
+</body>
+</html>
