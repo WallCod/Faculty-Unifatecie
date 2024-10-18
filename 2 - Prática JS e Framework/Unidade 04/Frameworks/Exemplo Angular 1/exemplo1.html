@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo Angular 1</title>
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+    <h2>JavaScript - Exemplo 1</h2>
+    <hr>
+
+    <div ng-app="">
+    <p>Nome: <input type="text" ng-model="name"></p>
+    <p ng-bind="name"></p>
+    </div>
+
+    
+</body>
+</html>
+
+
+<!-- Esse código é um exemplo simples do Framework Angulas.js
+
+O que o código faz:
+Inclui o AngularJS: A linha de <script> carrega a biblioteca AngularJS a partir da CDN do Google.
+
+Define uma aplicação AngularJS: A diretiva ng-app inicializa a aplicação AngularJS.
+ No caso, a aplicação é inicializada sem nome (ng-app="").
+
+Ligação de dados (data binding):
+
+Input: O campo de texto <input type="text" ng-model="name"> é vinculado à variável name usando ng-model.
+ Isso significa que qualquer valor inserido pelo usuário será armazenado na variável name.
+
+Exibição do valor: O parágrafo <p ng-bind="name"></p> exibe o valor da variável name em tempo real.
+ Sempre que o valor do input mudar, o parágrafo será atualizado automaticamente.
+
+ Comportamento:
+Quando o usuário digita um nome no campo de texto,
+ o nome é automaticamente exibido no parágrafo abaixo, graças à vinculação de dados do AngularJS.

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 2</title>
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+<h2>JavaScript - Exemplo 2</h2>
+<hr>
+
+<div ng-app="" ng-init="nome='Ana'">
+    <p>Nome: <input type="text" ng-model="nome" value="nome"></p>
+    <p>Peso: <input type="text" ng-model="peso"></p>
+    <p>Altura: <input type="text" ng-model="altura"></p>
+    <hr>
+    <p>IMG = {{peso / (altura*altura)}}</p>
+</div>
+    
+</body>
+</html>
+
+<!--
+Esse exemplo usa AngularJS para calcular o Índice de Massa Corporal (IMC) de uma pessoa com base no peso e altura inseridos.
+
+O que o código faz:
+Inclui AngularJS: A linha de <script> carrega a biblioteca AngularJS a partir da CDN do Google.
+
+Inicia a Aplicação: A diretiva ng-app inicializa a aplicação AngularJS.
+
+Inicia Variável nome: A diretiva ng-init="nome='Ana'" inicializa a variável nome com o valor "Ana".
+
+Ligação de Dados (data binding):
+
+Campo Nome: O campo de texto <input type="text" ng-model="nome" value="nome"> é vinculado à variável nome.
+
+Campo Peso: O campo de texto <input type="text" ng-model="peso"> é vinculado à variável peso.
+
+Campo Altura: O campo de texto <input type="text" ng-model="altura"> é vinculado à variável altura.
+
+Cálculo do IMC: O parágrafo <p>IMG = {{peso / (altura * altura)}}</p> exibe o resultado do cálculo do IMC em tempo real. O IMC é calculado dividindo o peso pela altura ao quadrado.
+
+Comportamento:
+Quando o usuário digita valores nos campos de peso e altura,
+ o IMC é automaticamente calculado e exibido no parágrafo correspondente.
+
+-->

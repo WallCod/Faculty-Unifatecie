@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 3</title>
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+
+    <h2>JavaScript - Exemplo 3</h2>
+    <hr>
+    <div ng-app="">
+        <form>
+            Selecione as Opções Desejadas do Menu: <br>
+            <input type="checkbox" ng-model="opcao1">Bebidas
+            <input type="checkbox" ng-model="opcao2">Pratos
+            <input type="checkbox" ng-model="opcao3">Sobremesas
+        </form>
+    </div>
+    
+</body>
+</html>
+
+<!--
+
+Esse exemplo é um formulário simples usando AngularJS para vincular dados de caixas de seleção (checkboxes)
+
+O que o código faz:
+Inclui AngularJS: A linha de <script> carrega a biblioteca AngularJS a partir da CDN do Google.
+
+Inicia a Aplicação: A diretiva ng-app inicializa a aplicação AngularJS.
+
+Ligação de Dados (data binding):
+
+Caixas de Seleção:
+
+<input type="checkbox" ng-model="opcao1">Bebidas
+
+<input type="checkbox" ng-model="opcao2">Pratos
+
+<input type="checkbox" ng-model="opcao3">Sobremesas
+
+Cada checkbox está vinculado a uma variável (opcao1, opcao2, opcao3) usando ng-model.
+ Quando o usuário marca ou desmarca uma caixa de seleção, a variável associada é automaticamente atualizada.
+
+ Comportamento:
+Ao marcar as opções de Bebidas, Pratos e Sobremesas, os valores das variáveis opcao1, opcao2, e opcao3 mudam dinamicamente.
+
+-->
