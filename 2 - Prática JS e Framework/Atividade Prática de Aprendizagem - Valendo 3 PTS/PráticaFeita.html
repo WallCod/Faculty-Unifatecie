@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prática de Aprendizagem</title>
+</head>
+<body>
+    
+<h2>JavaScript - Exemplo 1</h2>
+<hr>
+<p><b>**MENU DE OPÇÕES**</b></p>
+<p>1. Inserir Dados</p>
+<p>2. Consultar Dados</p>
+<p>3. Editar Dados</p>
+<p>4. Excluir Dados</p>
+<p><b> Informe uma Opção:</b></p>
+<input id="opcao" value="0"/>
+<br>
+
+<button onclick="funcao()">Opção</button>
+<p id="ex1"></p>
+
+
+<script>
+
+function funcao() {
+    opcao = document.getElementById("opcao").value;
+    if (opcao == "1") {
+            mensagem = "Escolhida a Inserção de Dados";
+    } else if (opcao == "2") {
+        mensagem = "Escolhida a Consulta de Dados";
+    } else if (opcao == "3") {
+        mensagem = "Escolhida a Edição de Dados";
+    } else if (opcao == "4") {
+        mensagem = "Escolhida a Exclusão de Dados";
+    } else {
+        mensagem = "Opção Inválida";
+    }
+    document.getElementById('ex1').innerHTML = mensagem;
+}
+
+</script>
+
+
+</body>
+</html>
