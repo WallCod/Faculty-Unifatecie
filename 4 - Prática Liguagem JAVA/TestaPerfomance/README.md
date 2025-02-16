@@ -117,6 +117,6 @@ O **HashSet<>()** teve tempos ligeiramente mais altos em comparação com o Arra
 
 #### Tabela Preenchida
 
-![logo Tabela](/img/tabela.jpeg)
+![logo Tabela](./img/tabela.jpeg)
 
 
