@@ -12,6 +12,10 @@
 </p>
 
 <p align="center">
+  <a href="https://wallcod.github.io/Faculty-Unifatecie/"><img src="https://img.shields.io/badge/Demo_Online-Acessar_Catálogo_Web-f59e0b?style=for-the-badge&logo=googlechrome&logoColor=black" alt="Demo Online" /></a>
+</p>
+
+<p align="center">
   <a href="https://www.linkedin.com/in/wallax-figueiredo-41116b285/"><img src="https://img.shields.io/badge/LinkedIn-Wallax_Figueiredo-0A66C2?style=flat-square&logo=linkedin" alt="LinkedIn" /></a>
   <a href="https://github.com/WallCod"><img src="https://img.shields.io/badge/GitHub-WallCod-181717?style=flat-square&logo=github" alt="GitHub" /></a>
 </p>
