@@ -135,7 +135,7 @@
             </div>
             <div class="api-status-indicator" title="Conexão com serviço REST JSON ativa">
               <span class="status-dot" aria-hidden="true"></span>
-              <span>API RESTful conectada</span>
+              <span id="apiStatusText">API RESTful conectada</span>
             </div>
           </div>
 
@@ -280,7 +280,7 @@
     </div>
   </footer>
 
-  <!-- Script Modular (ES6 Modules) -->
-  <script type="module" src="./scripts/app.js"></script>
+  <!-- Script Principal Universal (Executa nativamente em file://, http:// e https://) -->
+  <script src="./scripts/app.js" defer></script>
 </body>
 </html>

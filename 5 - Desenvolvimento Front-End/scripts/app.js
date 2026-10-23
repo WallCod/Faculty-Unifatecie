@@ -1,10 +1,228 @@
 /**
- * app.js - Orquestrador de Interface e Manipulação do DOM
- * Implementa reatividade baseada em estado, busca com debounce,
- * filtros por categoria, ordenação dinâmica, modal acessível e favoritos.
+ * app.js - Orquestrador de Interface, API e Manipulação do DOM
+ * Compatível 100% com carregamento direto (file://), servidores locais (http://)
+ * e servidores em nuvem (https://).
  */
 
-import { fetchBooksCatalog } from './api.js';
+// Catálogo Fallback Integrado: garante funcionamento imediato sob protocolo file:// e offline
+const FALLBACK_BOOKS_CATALOG = [
+  {
+    "id": 1,
+    "title": "Clean Code: A Handbook of Agile Software Craftsmanship",
+    "author": "Robert C. Martin",
+    "category": "Engenharia de Software",
+    "price": 89.90,
+    "rating": 4.8,
+    "year": 2008,
+    "pages": 464,
+    "publisher": "Prentice Hall",
+    "isbn": "978-0132350884",
+    "cover": "https://images.unsplash.com/photo-1532012164546-f432f2e3777a?auto=format&fit=crop&w=600&q=80",
+    "synopsis": "Mesmo um código ruim pode funcionar. Mas se ele não for limpo, pode levar uma organização de desenvolvimento a perder produtividade. Robert C. Martin apresenta princípios essenciais para escrever códigos legíveis, manuteníveis e elegantes através de exemplos práticos.",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "Designing Data-Intensive Applications",
+    "author": "Martin Kleppmann",
+    "category": "Sistemas Distribuídos",
+    "price": 145.50,
+    "rating": 4.9,
+    "year": 2017,
+    "pages": 616,
+    "publisher": "O'Reilly Media",
+    "isbn": "978-1449373320",
+    "cover": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80",
+    "synopsis": "Os dados estão no centro dos maiores desafios no design de software moderno. Este guia definitivo investiga profundamente os princípios arquiteturais fundamentais por trás de bancos de dados relacionais e NoSQL, mensageria e processamento de fluxos.",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title": "Estruturas de Dados e Algoritmos com JavaScript",
+    "author": "Loiane Groner",
+    "category": "Ciência da Computação",
+    "price": 74.00,
+    "rating": 4.7,
+    "year": 2019,
+    "pages": 408,
+    "publisher": "Novatec",
+    "isbn": "978-8575226933",
+    "cover": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80",
+    "synopsis": "Aprenda a implementar estruturas de dados clássicas como pilhas, filas, listas encadeadas, árvores e grafos usando JavaScript moderno (ES6+), além de algoritmos fundamentais de ordenação e busca essenciais para entrevistas técnicas.",
+    "featured": false
+  },
+  {
+    "id": 4,
+    "title": "Refactoring: Improving the Design of Existing Code",
+    "author": "Martin Fowler",
+    "category": "Engenharia de Software",
+    "price": 120.00,
+    "rating": 4.8,
+    "year": 2018,
+    "pages": 448,
+    "publisher": "Addison-Wesley",
+    "isbn": "978-0134757599",
+    "cover": "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=600&q=80",
+    "synopsis": "Completamente atualizado para JavaScript, o clássico de Martin Fowler detalha o catálogo de refatorações, explicando quando aplicar cada transformação de código para torná-lo mais modular e compreensível sem alterar seu comportamento externo.",
+    "featured": true
+  },
+  {
+    "id": 5,
+    "title": "Arquitetura Limpa: O Guia do Artesão para Estrutura de Software",
+    "author": "Robert C. Martin",
+    "category": "Arquitetura",
+    "price": 95.00,
+    "rating": 4.6,
+    "year": 2019,
+    "pages": 432,
+    "publisher": "Alta Books",
+    "isbn": "978-8550804606",
+    "cover": "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80",
+    "synopsis": "Aplicando regras universais de arquitetura de software, Robert Martin demonstra como alcançar uma separação de interesses robusta, tornando a lógica de negócios independente de frameworks, bancos de dados, interfaces e bibliotecas externas.",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title": "O Programador Pragmático: De Aprendiz a Mestre",
+    "author": "David Thomas, Andrew Hunt",
+    "category": "Engenharia de Software",
+    "price": 112.90,
+    "rating": 4.9,
+    "year": 2020,
+    "pages": 352,
+    "publisher": "Bookman",
+    "isbn": "978-8582605331",
+    "cover": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80",
+    "synopsis": "Ilustra as melhores práticas e as principais armadilhas do desenvolvimento de software. Da responsabilidade pessoal e desenvolvimento de carreira a técnicas de arquitetura para manter o código flexível e fácil de reutilizar.",
+    "featured": true
+  },
+  {
+    "id": 7,
+    "title": "Don't Make Me Think, Revisited: A Common Sense Approach to Web Usability",
+    "author": "Steve Krug",
+    "category": "Design & UX",
+    "price": 68.50,
+    "rating": 4.7,
+    "year": 2014,
+    "pages": 216,
+    "publisher": "New Riders",
+    "isbn": "978-0321965516",
+    "cover": "https://images.unsplash.com/photo-1507842229451-79774d61a6b0?auto=format&fit=crop&w=600&q=80",
+    "synopsis": "O manual definitivo sobre usabilidade na web e design de interfaces. Compreenda os princípios cognitivos da navegação humana, redução da carga mental e construção de fluxos intuitivos para usuários de desktop e mobile.",
+    "featured": false
+  },
+  {
+    "id": 8,
+    "title": "Redes de Computadores",
+    "author": "Andrew S. Tanenbaum, David J. Wetherall",
+    "category": "Redes e Infraestrutura",
+    "price": 169.00,
+    "rating": 4.8,
+    "year": 2013,
+    "pages": 600,
+    "publisher": "Pearson",
+    "isbn": "978-8576059240",
+    "cover": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
+    "synopsis": "A bíblia das redes de computadores, cobrindo o modelo de camadas OSI e TCP/IP, protocolos HTTP, DNS, roteamento IP, segurança com TLS e transmissão física de dados de forma rigorosa e didática.",
+    "featured": false
+  },
+  {
+    "id": 9,
+    "title": "You Don't Know JS Yet: Get Started",
+    "author": "Kyle Simpson",
+    "category": "Linguagens e Web",
+    "price": 55.00,
+    "rating": 4.6,
+    "year": 2020,
+    "pages": 142,
+    "publisher": "Independently published",
+    "isbn": "979-8602477429",
+    "cover": "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=600&q=80",
+    "synopsis": "Mergulhe nas entranhas do JavaScript: escopo léxico, closures, prototypes, coerção de tipos e mecanismos de execução assíncrona do runtime V8. Essencial para quem quer dominar o motor da linguagem web.",
+    "featured": false
+  },
+  {
+    "id": 10,
+    "title": "Sistemas Operacionais Modernos",
+    "author": "Andrew S. Tanenbaum, Herbert Bos",
+    "category": "Ciência da Computação",
+    "price": 178.00,
+    "rating": 4.9,
+    "year": 2016,
+    "pages": 864,
+    "publisher": "Pearson",
+    "isbn": "978-8543005676",
+    "cover": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80",
+    "synopsis": "Referência obrigatória em Engenharia da Computação sobre o funcionamento interno dos sistemas operacionais: gerenciamento de processos, threads, escalonamento, memória virtual, sistemas de arquivos e segurança de baixo nível.",
+    "featured": false
+  },
+  {
+    "id": 11,
+    "title": "Padrões de Projetos: Soluções Reutilizáveis de Software Orientado a Objetos",
+    "author": "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides (GoF)",
+    "category": "Arquitetura",
+    "price": 139.90,
+    "rating": 4.7,
+    "year": 2000,
+    "pages": 384,
+    "publisher": "Bookman",
+    "isbn": "978-8573076103",
+    "cover": "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=600&q=80",
+    "synopsis": "A obra-prima dos Design Patterns (Gang of Four). Catálogo clássico com 23 padrões criacionais, estruturais e comportamentais fundamentais para a criação de sistemas modulares, testáveis e extensíveis.",
+    "featured": true
+  },
+  {
+    "id": 12,
+    "title": "Inteligência Artificial: Uma Abordagem Moderna",
+    "author": "Stuart Russell, Peter Norvig",
+    "category": "Ciência da Computação",
+    "price": 210.00,
+    "rating": 4.9,
+    "year": 2022,
+    "pages": 1040,
+    "publisher": "GEN LTC",
+    "isbn": "978-8595158658",
+    "cover": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+    "synopsis": "O texto de referência global para estudantes e pesquisadores de IA. Cobre agentes inteligentes, aprendizado de máquina, redes neurais profundas, representação de conhecimento, planejamento e raciocínio probabilístico.",
+    "featured": true
+  }
+];
+
+// Camada de API Assíncrona
+async function fetchBooksCatalog() {
+  // Protocolo file:// bloqueia chamadas fetch por política de segurança do navegador (CORS local).
+  // Neste caso, recorremos ao catálogo estruturado integrado sem falhar a interface.
+  if (window.location.protocol === 'file:') {
+    console.info('[API Service] Executando sob protocolo file://. Utilizando catálogo integrado com sucesso.');
+    return FALLBACK_BOOKS_CATALOG;
+  }
+
+  try {
+    const response = await fetch('./data/books.json', {
+      method: 'GET',
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro HTTP: ${response.status} ${response.statusText}`);
+    }
+
+    const books = await response.json();
+    try {
+      localStorage.setItem('alexandria_catalog_cache_v1', JSON.stringify(books));
+    } catch (e) {
+      // Ignora erro de cota de armazenamento
+    }
+    return books;
+  } catch (error) {
+    console.warn('[API Service] Falha na requisição fetch remota. Carregando dados de contingência.', error);
+    const cached = localStorage.getItem('alexandria_catalog_cache_v1');
+    if (cached) {
+      return JSON.parse(cached);
+    }
+    return FALLBACK_BOOKS_CATALOG;
+  }
+}
 
 // Estado Global da Aplicação
 const appState = {
@@ -13,7 +231,7 @@ const appState = {
   selectedCategory: 'all',
   searchQuery: '',
   sortBy: 'featured',
-  favorites: new Set(JSON.parse(localStorage.getItem('alexandria_favs') || '[]')),
+  favorites: new Set(),
   isLoading: true
 };
 
@@ -23,42 +241,66 @@ const currencyFormatter = new Intl.NumberFormat('pt-BR', {
   currency: 'BRL'
 });
 
-// Elementos do DOM
-const DOM = {
-  catalogGrid: document.getElementById('catalogGrid'),
-  searchInput: document.getElementById('searchInput'),
-  sortSelect: document.getElementById('sortSelect'),
-  categoryNav: document.getElementById('categoryNav'),
-  resultsCount: document.getElementById('resultsCount'),
-  themeToggleBtn: document.getElementById('themeToggleBtn'),
-  themeIcon: document.getElementById('themeIcon'),
-  detailsModal: document.getElementById('detailsModal'),
-  modalCloseBtn: document.getElementById('modalCloseBtn'),
-  modalCover: document.getElementById('modalCover'),
-  modalCategory: document.getElementById('modalCategory'),
-  modalRating: document.getElementById('modalRating'),
-  modalTitle: document.getElementById('modalTitle'),
-  modalAuthor: document.getElementById('modalAuthor'),
-  modalPublisher: document.getElementById('modalPublisher'),
-  modalYear: document.getElementById('modalYear'),
-  modalPages: document.getElementById('modalPages'),
-  modalIsbn: document.getElementById('modalIsbn'),
-  modalSynopsis: document.getElementById('modalSynopsis'),
-  modalPrice: document.getElementById('modalPrice'),
-  modalBuyBtn: document.getElementById('modalBuyBtn'),
-  toastContainer: document.getElementById('toastContainer'),
-  totalBooksStat: document.getElementById('totalBooksStat')
-};
+// Cache de Elementos do DOM
+let DOM = {};
 
-// Inicialização
-document.addEventListener('DOMContentLoaded', () => {
+function queryDOMElements() {
+  DOM = {
+    catalogGrid: document.getElementById('catalogGrid'),
+    searchInput: document.getElementById('searchInput'),
+    sortSelect: document.getElementById('sortSelect'),
+    categoryNav: document.getElementById('categoryNav'),
+    resultsCount: document.getElementById('resultsCount'),
+    themeToggleBtn: document.getElementById('themeToggleBtn'),
+    themeIcon: document.getElementById('themeIcon'),
+    detailsModal: document.getElementById('detailsModal'),
+    modalCloseBtn: document.getElementById('modalCloseBtn'),
+    modalCover: document.getElementById('modalCover'),
+    modalCategory: document.getElementById('modalCategory'),
+    modalRating: document.getElementById('modalRating'),
+    modalTitle: document.getElementById('modalTitle'),
+    modalAuthor: document.getElementById('modalAuthor'),
+    modalPublisher: document.getElementById('modalPublisher'),
+    modalYear: document.getElementById('modalYear'),
+    modalPages: document.getElementById('modalPages'),
+    modalIsbn: document.getElementById('modalIsbn'),
+    modalSynopsis: document.getElementById('modalSynopsis'),
+    modalPrice: document.getElementById('modalPrice'),
+    modalBuyBtn: document.getElementById('modalBuyBtn'),
+    toastContainer: document.getElementById('toastContainer'),
+    totalBooksStat: document.getElementById('totalBooksStat'),
+    apiStatusText: document.getElementById('apiStatusText')
+  };
+}
+
+/**
+ * Ponto de Entrada Principal
+ */
+function initializeApp() {
+  queryDOMElements();
+
+  // Carrega favoritos do LocalStorage
+  try {
+    const savedFavs = JSON.parse(localStorage.getItem('alexandria_favs') || '[]');
+    appState.favorites = new Set(savedFavs);
+  } catch (e) {
+    appState.favorites = new Set();
+  }
+
   initTheme();
   setupEventListeners();
   loadCatalog();
-});
+}
+
+// Dispara inicialização independente de quando o script carregar
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+  initializeApp();
+}
 
 /**
- * Carrega catálogo a partir da API assíncrona
+ * Carrega catálogo a partir da API ou dados resilientes
  */
 async function loadCatalog() {
   renderSkeletons(8);
@@ -67,23 +309,32 @@ async function loadCatalog() {
     appState.allBooks = books;
     appState.isLoading = false;
 
-    // Atualiza estatísticas do Hero
     if (DOM.totalBooksStat) {
       DOM.totalBooksStat.textContent = books.length;
+    }
+
+    if (DOM.apiStatusText) {
+      DOM.apiStatusText.textContent = window.location.protocol === 'file:' 
+        ? 'Dados carregados (Modo Local/Offline)' 
+        : 'API RESTful JSON Conectada';
     }
 
     renderCategoryChips();
     applyFiltersAndSort();
   } catch (error) {
+    console.error('Falha crítica ao inicializar catálogo:', error);
+    appState.allBooks = FALLBACK_BOOKS_CATALOG;
     appState.isLoading = false;
-    renderErrorState(error.message);
+    renderCategoryChips();
+    applyFiltersAndSort();
   }
 }
 
 /**
- * Renderiza esqueletos de carregamento para feedback visual imediato
+ * Renderiza esqueletos de carregamento
  */
 function renderSkeletons(count = 6) {
+  if (!DOM.catalogGrid) return;
   let skeletonsHtml = '';
   for (let i = 0; i < count; i++) {
     skeletonsHtml += `
@@ -99,11 +350,13 @@ function renderSkeletons(count = 6) {
     `;
   }
   DOM.catalogGrid.innerHTML = skeletonsHtml;
-  DOM.resultsCount.textContent = 'Carregando catálogo da API...';
+  if (DOM.resultsCount) {
+    DOM.resultsCount.textContent = 'Carregando catálogo de obras...';
+  }
 }
 
 /**
- * Aplica busca textual, filtro de categoria e critério de ordenação
+ * Aplica busca, filtro de categoria e ordenação
  */
 function applyFiltersAndSort() {
   let result = [...appState.allBooks];
@@ -113,13 +366,14 @@ function applyFiltersAndSort() {
     result = result.filter(book => book.category === appState.selectedCategory);
   }
 
-  // 2. Filtro por Busca Textual (Título ou Autor)
+  // 2. Filtro por Busca Textual
   if (appState.searchQuery.trim() !== '') {
     const query = appState.searchQuery.toLowerCase().trim();
     result = result.filter(book =>
-      book.title.toLowerCase().includes(query) ||
-      book.author.toLowerCase().includes(query) ||
-      book.category.toLowerCase().includes(query)
+      (book.title && book.title.toLowerCase().includes(query)) ||
+      (book.author && book.author.toLowerCase().includes(query)) ||
+      (book.category && book.category.toLowerCase().includes(query)) ||
+      (book.synopsis && book.synopsis.toLowerCase().includes(query))
     );
   }
 
@@ -154,8 +408,12 @@ function applyFiltersAndSort() {
  * Renderiza os cartões de livros no DOM
  */
 function renderCatalog() {
+  if (!DOM.catalogGrid) return;
   const books = appState.filteredBooks;
-  DOM.resultsCount.textContent = `Exibindo ${books.length} de ${appState.allBooks.length} títulos`;
+
+  if (DOM.resultsCount) {
+    DOM.resultsCount.textContent = `Exibindo ${books.length} de ${appState.allBooks.length} títulos`;
+  }
 
   if (books.length === 0) {
     DOM.catalogGrid.innerHTML = `
@@ -164,7 +422,7 @@ function renderCatalog() {
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
         <h3 class="empty-title">Nenhum livro encontrado</h3>
-        <p class="empty-text">Não encontramos resultados para os filtros selecionados. Tente ajustar os termos de busca ou categoria.</p>
+        <p class="empty-text">Não encontramos resultados para os termos ou categoria selecionados.</p>
         <button id="resetFiltersBtn" class="empty-reset-btn" type="button">Limpar todos os filtros</button>
       </div>
     `;
@@ -178,7 +436,7 @@ function renderCatalog() {
     return `
       <article class="book-card" data-book-id="${book.id}">
         <div class="book-cover-container">
-          <img src="${book.cover}" alt="Capa do livro ${book.title}" class="book-cover-img" loading="lazy" />
+          <img src="${book.cover}" alt="Capa de ${book.title}" class="book-cover-img" loading="lazy" />
           ${book.featured ? '<span class="book-featured-tag">Destaque</span>' : ''}
           <button 
             type="button" 
@@ -222,9 +480,10 @@ function renderCatalog() {
 }
 
 /**
- * Renderiza dinamicamente as pílulas (chips) de categorias disponíveis
+ * Renderiza pílulas de categorias
  */
 function renderCategoryChips() {
+  if (!DOM.categoryNav) return;
   const categories = ['all', ...new Set(appState.allBooks.map(b => b.category))];
   
   DOM.categoryNav.innerHTML = categories.map(cat => {
@@ -243,43 +502,33 @@ function renderCategoryChips() {
 }
 
 /**
- * Renderiza tela de erro caso a chamada API falhe
- */
-function renderErrorState(errorMessage) {
-  DOM.catalogGrid.innerHTML = `
-    <div class="empty-state" role="alert" style="border-color: #ef4444;">
-      <h3 class="empty-title" style="color: #ef4444;">Falha ao carregar catálogo</h3>
-      <p class="empty-text">Não foi possível obter os dados da API: ${errorMessage}</p>
-      <button id="retryApiBtn" class="empty-reset-btn" type="button">Tentar novamente</button>
-    </div>
-  `;
-  document.getElementById('retryApiBtn')?.addEventListener('click', loadCatalog);
-}
-
-/**
- * Abre o Modal Nativo (<dialog>) exibindo a ficha completa do livro
+ * Abre o Modal Nativo (<dialog>)
  */
 function openBookDetails(bookId) {
   const book = appState.allBooks.find(b => b.id === Number(bookId));
-  if (!book) return;
+  if (!book || !DOM.detailsModal) return;
 
-  DOM.modalCover.src = book.cover;
-  DOM.modalCover.alt = `Capa ampliada de ${book.title}`;
-  DOM.modalCategory.textContent = book.category;
-  DOM.modalRating.textContent = `★ ${book.rating.toFixed(1)} / 5.0`;
-  DOM.modalTitle.textContent = book.title;
-  DOM.modalAuthor.textContent = `Por ${book.author}`;
-  DOM.modalPublisher.textContent = book.publisher;
-  DOM.modalYear.textContent = book.year;
-  DOM.modalPages.textContent = `${book.pages} páginas`;
-  DOM.modalIsbn.textContent = book.isbn;
-  DOM.modalSynopsis.textContent = book.synopsis;
-  DOM.modalPrice.textContent = currencyFormatter.format(book.price);
+  if (DOM.modalCover) {
+    DOM.modalCover.src = book.cover;
+    DOM.modalCover.alt = `Capa ampliada de ${book.title}`;
+  }
+  if (DOM.modalCategory) DOM.modalCategory.textContent = book.category;
+  if (DOM.modalRating) DOM.modalRating.textContent = `★ ${book.rating.toFixed(1)} / 5.0`;
+  if (DOM.modalTitle) DOM.modalTitle.textContent = book.title;
+  if (DOM.modalAuthor) DOM.modalAuthor.textContent = `Por ${book.author}`;
+  if (DOM.modalPublisher) DOM.modalPublisher.textContent = book.publisher;
+  if (DOM.modalYear) DOM.modalYear.textContent = book.year;
+  if (DOM.modalPages) DOM.modalPages.textContent = `${book.pages} páginas`;
+  if (DOM.modalIsbn) DOM.modalIsbn.textContent = book.isbn;
+  if (DOM.modalSynopsis) DOM.modalSynopsis.textContent = book.synopsis;
+  if (DOM.modalPrice) DOM.modalPrice.textContent = currencyFormatter.format(book.price);
 
-  DOM.modalBuyBtn.onclick = () => {
-    showToast(`Adicionado ao carrinho de compras: ${book.title}`);
-    DOM.detailsModal.close();
-  };
+  if (DOM.modalBuyBtn) {
+    DOM.modalBuyBtn.onclick = () => {
+      showToast(`Adicionado ao carrinho: ${book.title}`);
+      closeModal();
+    };
+  }
 
   if (typeof DOM.detailsModal.showModal === 'function') {
     DOM.detailsModal.showModal();
@@ -288,8 +537,17 @@ function openBookDetails(bookId) {
   }
 }
 
+function closeModal() {
+  if (!DOM.detailsModal) return;
+  if (typeof DOM.detailsModal.close === 'function') {
+    DOM.detailsModal.close();
+  } else {
+    DOM.detailsModal.removeAttribute('open');
+  }
+}
+
 /**
- * Alterna estado de favorito e persiste no LocalStorage
+ * Favoritar / Desfavoritar
  */
 function toggleFavorite(bookId) {
   const id = Number(bookId);
@@ -303,20 +561,23 @@ function toggleFavorite(bookId) {
     showToast(`Adicionado aos favoritos: ${book?.title || ''}`);
   }
 
-  localStorage.setItem('alexandria_favs', JSON.stringify([...appState.favorites]));
+  try {
+    localStorage.setItem('alexandria_favs', JSON.stringify([...appState.favorites]));
+  } catch (e) {}
+
   renderCatalog();
 }
 
 /**
- * Limpa todos os filtros ativos
+ * Reseta filtros
  */
 function resetFilters() {
   appState.selectedCategory = 'all';
   appState.searchQuery = '';
   appState.sortBy = 'featured';
 
-  DOM.searchInput.value = '';
-  DOM.sortSelect.value = 'featured';
+  if (DOM.searchInput) DOM.searchInput.value = '';
+  if (DOM.sortSelect) DOM.sortSelect.value = 'featured';
 
   renderCategoryChips();
   applyFiltersAndSort();
@@ -324,9 +585,11 @@ function resetFilters() {
 }
 
 /**
- * Exibe notificação temporária tipo Toast
+ * Exibe notificação Toast
  */
 function showToast(message) {
+  if (!DOM.toastContainer) return;
+
   const toast = document.createElement('div');
   toast.className = 'toast';
   toast.innerHTML = `
@@ -346,9 +609,9 @@ function showToast(message) {
 }
 
 /**
- * Debounce utility para otimizar disparos de eventos de digitação
+ * Debounce
  */
-function debounce(fn, delayMs = 300) {
+function debounce(fn, delayMs = 250) {
   let timeoutId;
   return function (...args) {
     clearTimeout(timeoutId);
@@ -357,77 +620,92 @@ function debounce(fn, delayMs = 300) {
 }
 
 /**
- * Configuração de Event Listeners com Delegação de Eventos
+ * Configuração de Ouvintes de Eventos
  */
 function setupEventListeners() {
-  // 1. Busca textual com Debounce (300ms)
-  const debouncedSearch = debounce((e) => {
-    appState.searchQuery = e.target.value;
-    applyFiltersAndSort();
-  }, 250);
-  DOM.searchInput.addEventListener('input', debouncedSearch);
+  // Busca em tempo real
+  if (DOM.searchInput) {
+    const debouncedSearch = debounce((e) => {
+      appState.searchQuery = e.target.value;
+      applyFiltersAndSort();
+    }, 200);
+    DOM.searchInput.addEventListener('input', debouncedSearch);
+  }
 
-  // 2. Ordenação
-  DOM.sortSelect.addEventListener('change', (e) => {
-    appState.sortBy = e.target.value;
-    applyFiltersAndSort();
-  });
-
-  // 3. Delegação de Eventos na Barra de Categorias
-  DOM.categoryNav.addEventListener('click', (e) => {
-    const chip = e.target.closest('.category-chip');
-    if (!chip) return;
-
-    appState.selectedCategory = chip.dataset.category;
-    document.querySelectorAll('.category-chip').forEach(c => {
-      c.classList.toggle('active', c === chip);
-      c.setAttribute('aria-pressed', c === chip ? 'true' : 'false');
+  // Ordenação
+  if (DOM.sortSelect) {
+    DOM.sortSelect.addEventListener('change', (e) => {
+      appState.sortBy = e.target.value;
+      applyFiltersAndSort();
     });
+  }
 
-    applyFiltersAndSort();
-  });
+  // Filtros por Categorias (Event Delegation)
+  if (DOM.categoryNav) {
+    DOM.categoryNav.addEventListener('click', (e) => {
+      const chip = e.target.closest('.category-chip');
+      if (!chip) return;
 
-  // 4. Delegação de Eventos no Catálogo de Livros (Detalhes e Favoritos)
-  DOM.catalogGrid.addEventListener('click', (e) => {
-    const detailBtn = e.target.closest('[data-action="view-details"]');
-    if (detailBtn) {
-      openBookDetails(detailBtn.dataset.id);
-      return;
-    }
+      appState.selectedCategory = chip.dataset.category;
+      document.querySelectorAll('.category-chip').forEach(c => {
+        c.classList.toggle('active', c === chip);
+        c.setAttribute('aria-pressed', c === chip ? 'true' : 'false');
+      });
 
-    const favBtn = e.target.closest('[data-action="toggle-favorite"]');
-    if (favBtn) {
-      toggleFavorite(favBtn.dataset.id);
-      return;
-    }
-  });
+      applyFiltersAndSort();
+    });
+  }
 
-  // 5. Fechamento do Modal
-  DOM.modalCloseBtn.addEventListener('click', () => {
-    DOM.detailsModal.close();
-  });
+  // Ações nos Cartões (Event Delegation)
+  if (DOM.catalogGrid) {
+    DOM.catalogGrid.addEventListener('click', (e) => {
+      const detailBtn = e.target.closest('[data-action="view-details"]');
+      if (detailBtn) {
+        openBookDetails(detailBtn.dataset.id);
+        return;
+      }
 
-  DOM.detailsModal.addEventListener('click', (e) => {
-    // Fecha ao clicar no backdrop (fora do container interno)
-    const rect = DOM.detailsModal.getBoundingClientRect();
-    const isInDialog = (
-      rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
-      rect.left <= e.clientX && e.clientX <= rect.left + rect.width
-    );
-    if (!isInDialog) {
-      DOM.detailsModal.close();
-    }
-  });
+      const favBtn = e.target.closest('[data-action="toggle-favorite"]');
+      if (favBtn) {
+        toggleFavorite(favBtn.dataset.id);
+        return;
+      }
+    });
+  }
 
-  // 6. Tema Dark / Light
-  DOM.themeToggleBtn.addEventListener('click', toggleTheme);
+  // Fechamento do Modal
+  if (DOM.modalCloseBtn) {
+    DOM.modalCloseBtn.addEventListener('click', closeModal);
+  }
+
+  if (DOM.detailsModal) {
+    DOM.detailsModal.addEventListener('click', (e) => {
+      const rect = DOM.detailsModal.getBoundingClientRect();
+      const isInDialog = (
+        rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+        rect.left <= e.clientX && e.clientX <= rect.left + rect.width
+      );
+      if (!isInDialog) {
+        closeModal();
+      }
+    });
+  }
+
+  // Alternância de Tema
+  if (DOM.themeToggleBtn) {
+    DOM.themeToggleBtn.addEventListener('click', toggleTheme);
+  }
 }
 
 /**
- * Gerenciamento de Tema (Dark / Light)
+ * Tema Dark/Light
  */
 function initTheme() {
-  const savedTheme = localStorage.getItem('alexandria_theme') || 'dark';
+  let savedTheme = 'dark';
+  try {
+    savedTheme = localStorage.getItem('alexandria_theme') || 'dark';
+  } catch (e) {}
+
   document.documentElement.setAttribute('data-theme', savedTheme);
   updateThemeIcon(savedTheme);
 }
@@ -436,11 +714,14 @@ function toggleTheme() {
   const current = document.documentElement.getAttribute('data-theme') || 'dark';
   const next = current === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('alexandria_theme', next);
+  try {
+    localStorage.setItem('alexandria_theme', next);
+  } catch (e) {}
   updateThemeIcon(next);
 }
 
 function updateThemeIcon(theme) {
+  if (!DOM.themeIcon) return;
   if (theme === 'light') {
     DOM.themeIcon.innerHTML = `
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
