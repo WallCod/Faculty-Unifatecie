@@ -17,7 +17,7 @@ const FALLBACK_BOOKS_CATALOG = [
     "pages": 464,
     "publisher": "Prentice Hall",
     "isbn": "978-0132350884",
-    "cover": "https://images.unsplash.com/photo-1532012164546-f432f2e3777a?auto=format&fit=crop&w=600&q=80",
+    "cover": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=600&q=80",
     "synopsis": "Mesmo um código ruim pode funcionar. Mas se ele não for limpo, pode levar uma organização de desenvolvimento a perder produtividade. Robert C. Martin apresenta princípios essenciais para escrever códigos legíveis, manuteníveis e elegantes através de exemplos práticos.",
     "featured": true
   },
@@ -107,7 +107,7 @@ const FALLBACK_BOOKS_CATALOG = [
     "pages": 216,
     "publisher": "New Riders",
     "isbn": "978-0321965516",
-    "cover": "https://images.unsplash.com/photo-1507842229451-79774d61a6b0?auto=format&fit=crop&w=600&q=80",
+    "cover": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=600&q=80",
     "synopsis": "O manual definitivo sobre usabilidade na web e design de interfaces. Compreenda os princípios cognitivos da navegação humana, redução da carga mental e construção de fluxos intuitivos para usuários de desktop e mobile.",
     "featured": false
   },
@@ -405,6 +405,40 @@ function applyFiltersAndSort() {
 }
 
 /**
+ * Gera capa em SVG dinâmico caso a imagem externa falhe ou esteja offline
+ */
+function getSvgFallbackCover(title, category) {
+  const safeTitle = (title || 'Obra').replace(/['"<>&]/g, '').substring(0, 36);
+  const safeCat = (category || 'Geral').toUpperCase().replace(/['"<>&]/g, '');
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" width="300" height="400">
+    <defs>
+      <linearGradient id="bookGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#1e293b"/>
+        <stop offset="100%" stop-color="#0f172a"/>
+      </linearGradient>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#bookGrad)"/>
+    <rect x="15" y="15" width="270" height="370" fill="none" stroke="#d97706" stroke-width="2" opacity="0.5"/>
+    <text x="50%" y="65" fill="#38bdf8" font-size="10" font-family="sans-serif" font-weight="700" letter-spacing="2" text-anchor="middle">${safeCat}</text>
+    <text x="50%" y="175" fill="#f8fafc" font-size="15" font-family="serif" font-weight="700" text-anchor="middle">${safeTitle}</text>
+    <circle cx="150" cy="265" r="28" fill="#d97706" opacity="0.2"/>
+    <text x="150" y="274" fill="#d97706" font-size="22" font-family="sans-serif" text-anchor="middle">📖</text>
+    <text x="50%" y="340" fill="#94a3b8" font-size="10" font-family="sans-serif" text-anchor="middle">LIVRARIA ALEXANDRIA</text>
+  </svg>`;
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+}
+
+window.handleImageError = function(imgElement, title, category) {
+  imgElement.onerror = null;
+  imgElement.src = getSvgFallbackCover(title, category);
+};
+
+function escapeForHtmlAttr(str) {
+  if (!str) return '';
+  return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+
+/**
  * Renderiza os cartões de livros no DOM
  */
 function renderCatalog() {
@@ -436,7 +470,12 @@ function renderCatalog() {
     return `
       <article class="book-card" data-book-id="${book.id}">
         <div class="book-cover-container">
-          <img src="${book.cover}" alt="Capa de ${book.title}" class="book-cover-img" loading="lazy" />
+          <img 
+            src="${book.cover}" 
+            alt="Capa de ${book.title}" 
+            class="book-cover-img" 
+            loading="lazy" 
+            onerror="handleImageError(this, '${escapeForHtmlAttr(book.title)}', '${escapeForHtmlAttr(book.category)}')" />
           ${book.featured ? '<span class="book-featured-tag">Destaque</span>' : ''}
           <button 
             type="button" 
@@ -511,6 +550,10 @@ function openBookDetails(bookId) {
   if (DOM.modalCover) {
     DOM.modalCover.src = book.cover;
     DOM.modalCover.alt = `Capa ampliada de ${book.title}`;
+    DOM.modalCover.onerror = function() {
+      this.onerror = null;
+      this.src = getSvgFallbackCover(book.title, book.category);
+    };
   }
   if (DOM.modalCategory) DOM.modalCategory.textContent = book.category;
   if (DOM.modalRating) DOM.modalRating.textContent = `★ ${book.rating.toFixed(1)} / 5.0`;
