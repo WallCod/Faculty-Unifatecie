@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo online responsivo e interativo para livraria acadêmica - Atividade prática de Desenvolvimento Front-End (UniFatecie - Engenharia da Computação).">
+  <meta name="author" content="Wallax Figueiredo - Engenharia da Computação">
+  <title>Livraria Alexandria | Catálogo Online Responsivo & Interativo</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Newsreader -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos CSS Modularizados -->
+  <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Cabeçalho da Aplicação (Header Semântico)
+       ========================================================================= -->
+  <header class="site-header" role="banner">
+    <div class="container header-content">
+      <div class="brand-wrapper">
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Livraria Alexandria</h1>
+          <span class="brand-badge">Engenharia & Ciência da Computação</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <span class="academic-badge" title="Centro Universitário UniFatecie">UniFatecie • Engenharia</span>
+        <button 
+          id="themeToggleBtn" 
+          class="theme-toggle-btn" 
+          type="button" 
+          aria-label="Alternar tema claro e escuro"
+          title="Alternar tema de cores">
+          <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       Conteúdo Principal (Main Landmark)
+       ========================================================================= -->
+  <main id="mainContent" role="main">
+
+    <!-- Seção Hero Informativa -->
+    <section class="hero-section" aria-labelledby="heroTitle">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-tagline">
+            <span aria-hidden="true">🚀</span> Atividade Prática — Desenvolvimento Front-End
+          </div>
+          <h2 id="heroTitle" class="hero-title">
+            Catálogo Online Moderno, <em>Responsivo</em> & Orientado a Serviços
+          </h2>
+          <p class="hero-description">
+            Interface concebida em arquitetura multicamadas: estrutura semântica acessível (HTML5/ARIA), 
+            estilização responsiva mobile-first com CSS moderno e dados assíncronos consumidos via 
+            API RESTful JSON. Planejada para transição suave para SPA.
+          </p>
+        </div>
+
+        <aside class="hero-stats-card" aria-label="Estatísticas da Aplicação">
+          <div class="stat-item">
+            <div id="totalBooksStat" class="stat-value">12</div>
+            <div class="stat-label">Títulos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">REST</div>
+            <div class="stat-label">API JSON</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">Responsivo</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Controles de Busca, Filtro e Ordenação -->
+    <section class="controls-section" aria-label="Filtros e Controles de Catálogo">
+      <div class="container">
+        <div class="controls-card">
+          
+          <div class="controls-primary-row">
+            <!-- Barra de Busca Textual -->
+            <div class="search-box">
+              <label for="searchInput" class="sr-only">Buscar livros por título, autor ou palavra-chave</label>
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input 
+                type="search" 
+                id="searchInput" 
+                class="search-input" 
+                placeholder="Buscar por título, autor ou assunto (ex: Martin, Algoritmos)..."
+                autocomplete="off">
+            </div>
+
+            <!-- Ordenação -->
+            <div class="sort-wrapper">
+              <label for="sortSelect" class="sort-label">Ordenar por:</label>
+              <select id="sortSelect" class="sort-select">
+                <option value="featured">Destaques da Livraria</option>
+                <option value="price-asc">Menor Preço</option>
+                <option value="price-desc">Maior Preço</option>
+                <option value="rating-desc">Melhor Avaliação</option>
+                <option value="year-desc">Ano (Mais Recentes)</option>
+                <option value="title-asc">Título (A-Z)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Filtro por Categorias (Chips) -->
+          <nav id="categoryNav" class="categories-nav" aria-label="Filtrar por Categoria">
+            <!-- Gerado dinamicamente via app.js -->
+          </nav>
+
+          <!-- Feedback de Resultados e Status da API -->
+          <div class="results-feedback-row">
+            <div id="resultsCount" role="status" aria-live="polite">
+              Carregando dados...
+            </div>
+            <div class="api-status-indicator" title="Conexão com serviço REST JSON ativa">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span>API RESTful conectada</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Catálogo de Livros (Grid Responsivo) -->
+    <section class="catalog-section" aria-label="Catálogo de Livros Disponíveis">
+      <div class="container">
+        <div id="catalogGrid" class="catalog-grid" aria-live="polite">
+          <!-- Livros inseridos dinamicamente por manipulação do DOM -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Explicativa da Arquitetura para o Avaliador Acadêmico -->
+    <section class="architecture-section" aria-labelledby="archHeading">
+      <div class="container">
+        <div class="arch-header">
+          <h2 id="archHeading" class="arch-title">Arquitetura da Aplicação & Justificativa Técnica</h2>
+          <p class="arch-subtitle">Mapeamento direto dos requisitos acadêmicos da atividade para a implementação prática</p>
+        </div>
+
+        <div class="arch-cards-grid">
+          <article class="arch-card">
+            <h3>🌐 1. Entrega & HTML5</h3>
+            <p>
+              Resolução de domínio via <strong>DNS</strong>, transporte seguro com <strong>HTTPS/TLS 1.3</strong> 
+              e estrutura <strong>HTML semântica</strong> (landmarks <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, 
+              <code>&lt;article&gt;</code>, <code>&lt;dialog&gt;</code>) garantindo acessibilidade WCAG e indexação SEO.
+            </p>
+          </article>
+
+          <article class="arch-card">
+            <h3>🎨 2. Apresentação & CSS</h3>
+            <p>
+              Layout fluido <strong>mobile-first</strong>, controle de <strong>Box Model</strong> com 
+              <code>box-sizing: border-box</code>, <strong>CSS Grid</strong> e <strong>Flexbox</strong>, 
+              tokens centralizados (CSS variables) e suporte a tema escuro/claro.
+            </p>
+          </article>
+
+          <article class="arch-card">
+            <h3>⚡ 3. Interatividade & DOM</h3>
+            <p>
+              Consumo assíncrono de <strong>API RESTful (JSON)</strong> com <code>fetch</code> e <code>async/await</code>, 
+              busca textual com <strong>debounce</strong>, delegação de eventos e manipulação reativa do DOM.
+            </p>
+          </article>
+
+          <article class="arch-card">
+            <h3>🚀 4. Transição para SPA</h3>
+            <p>
+              Planejamento para framework moderno (React/Vite): componentização modular, fluxo unidirecional de 
+              dados (state/props), roteamento no cliente com <strong>History API</strong> e pipeline de build com 
+              tree-shaking.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       Modal de Detalhes do Livro (<dialog> nativo e acessível)
+       ========================================================================= -->
+  <dialog id="detailsModal" class="modal-dialog" aria-labelledby="modalTitle" aria-modal="true">
+    <div class="modal-container">
+      <button id="modalCloseBtn" class="modal-close-btn" type="button" aria-label="Fechar detalhes do livro">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="modal-visual">
+        <img id="modalCover" src="" alt="" class="modal-book-cover" />
+      </div>
+
+      <div class="modal-details">
+        <div>
+          <div class="modal-badge-row">
+            <span id="modalCategory" class="modal-category"></span>
+            <span id="modalRating" class="book-rating"></span>
+          </div>
+
+          <h2 id="modalTitle" class="modal-title"></h2>
+          <p id="modalAuthor" class="modal-author"></p>
+
+          <div class="modal-spec-grid">
+            <div class="spec-item">
+              <strong>Editora</strong>
+              <span id="modalPublisher"></span>
+            </div>
+            <div class="spec-item">
+              <strong>Ano de Publicação</strong>
+              <span id="modalYear"></span>
+            </div>
+            <div class="spec-item">
+              <strong>Extensão</strong>
+              <span id="modalPages"></span>
+            </div>
+            <div class="spec-item">
+              <strong>ISBN</strong>
+              <span id="modalIsbn"></span>
+            </div>
+          </div>
+
+          <h3 class="modal-synopsis-title">Sinopse da Obra</h3>
+          <p id="modalSynopsis" class="modal-synopsis"></p>
+        </div>
+
+        <div class="modal-cta-row">
+          <div>
+            <span class="sr-only">Preço de aquisição:</span>
+            <span id="modalPrice" class="modal-price"></span>
+          </div>
+          <button id="modalBuyBtn" class="modal-buy-btn" type="button">
+            Adicionar ao Carrinho
+          </button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Container de Notificações Toast -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- =========================================================================
+       Rodapé (Footer Semântico)
+       ========================================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-content">
+      <div>
+        <p><strong>Livraria Alexandria</strong> • Projeto Acadêmico de Desenvolvimento Front-End</p>
+        <p>Centro Universitário UniFatecie • Curso de Engenharia da Computação</p>
+      </div>
+      <div class="footer-author">
+        Desenvolvido por <a href="https://www.linkedin.com/in/wallax-figueiredo-41116b285/" target="_blank" rel="noopener noreferrer">Wallax Figueiredo</a> 🦁
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script Modular (ES6 Modules) -->
+  <script type="module" src="./scripts/app.js"></script>
+</body>
+</html>
