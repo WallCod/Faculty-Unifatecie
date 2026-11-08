@@ -21,7 +21,8 @@ A empresa modelo selecionada é a **Livraria & Editora Alexandria**, garantindo 
 | Arquivo | Descrição e Finalidade Acadêmica |
 | :--- | :--- |
 | **[`PLANO_ASSISTENTE_VIRTUAL.md`](./PLANO_ASSISTENTE_VIRTUAL.md)** | **Relatório Técnico Oficial da APA**: Resposta aprofundada aos 5 aspectos solicitados (Requisitos essenciais e interativos, Coleta e governança de dados, Pipeline de PLN e Fallback gracioso com exemplos, Persona e Arquitetura com diagramas Mermaid). |
-| **[`FAQ_EMPRESA_MODELO.md`](./FAQ_EMPRESA_MODELO.md)** | **Documento FAQ Extenso (+3 Páginas)**: Base de conhecimento completa com mais de 2.300 palavras cobrindo dados institucionais, catálogo editorial, pagamentos, frete, logística reversa, trocas e LGPD. |
+| **[`FAQ_EMPRESA_MODELO.md`](./FAQ_EMPRESA_MODELO.md)** | **Documento FAQ Extenso (+3 Páginas)**: Base de conhecimento completa com mais de 2.300 palavras cobrindo dados institucionais, catálogo editorial, pagamentos, frete, logística reversa, trocas e LGPD. *(Versão em PDF disponível em [`FAQ_EMPRESA_MODELO.pdf`](./FAQ_EMPRESA_MODELO.pdf))*. |
+| **[`FORUM_DISCUSSAO_IA_MERCADO_TRABALHO.md`](./FORUM_DISCUSSAO_IA_MERCADO_TRABALHO.md)** | **Fórum Avaliativo**: Reflexão crítica sobre os impactos da Inteligência Artificial no mercado de trabalho, com base no artigo da TOTVS. |
 | **[`index.html`](./index.html)** | **Aplicação Web Interativa**: Interface de usuário moderna para demonstrar o ChatBOT Alex em funcionamento real no navegador. |
 | **[`app.js`](./app.js)** | **Motor de PLN em JavaScript**: Implementação de normalização de texto, tokenização, remoção de stopwords em PT-BR, lematização/stemming heurístico, vetorização TF-IDF e cálculo de similaridade por cosseno. |
 | **[`styles.css`](./styles.css)** | **Design System Responsivo**: Folha de estilos moderna com suporte a mobile, badges de similaridade em tempo real e timeline de pedidos. |
