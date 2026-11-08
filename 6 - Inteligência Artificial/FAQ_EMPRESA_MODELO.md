@@ -174,3 +174,4 @@ Para orientar a indexação semântica e vetorização do motor de PLN, destacam
 
 ---
 *Fim do Documento Oficial de FAQ — Livraria & Editora Alexandria.*
+

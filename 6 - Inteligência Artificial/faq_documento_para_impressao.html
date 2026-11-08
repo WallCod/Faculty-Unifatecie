@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Documento Oficial de Perguntas Frequentes (FAQ) — Livraria & Editora Alexandria</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 20mm 18mm 20mm 18mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 10.5pt;
+      line-height: 1.6;
+      color: #1a202c;
+      background: #ffffff;
+      padding: 0;
+    }
+
+    /* Cabeçalho Acadêmico e Institucional */
+    .header-box {
+      border-bottom: 2px solid #2b6cb0;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+
+    .institution-line {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 9pt;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #4a5568;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    h1.doc-title {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 17pt;
+      font-weight: 800;
+      color: #1a365d;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 16px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 8.5pt;
+      color: #4a5568;
+      background: #f7fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      padding: 8px 12px;
+      margin-top: 10px;
+    }
+
+    .meta-item strong {
+      color: #2d3748;
+    }
+
+    /* Títulos de Seção */
+    h2.section-title {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 12pt;
+      font-weight: 700;
+      color: #2b6cb0;
+      border-bottom: 1px solid #cbd5e0;
+      padding-bottom: 4px;
+      margin-top: 22px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      page-break-after: avoid;
+    }
+
+    /* Bloco de Pergunta e Resposta */
+    .faq-item {
+      margin-bottom: 14px;
+      page-break-inside: avoid;
+    }
+
+    .faq-question {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .faq-question::before {
+      content: "•";
+      color: #3182ce;
+      font-size: 13pt;
+      line-height: 1;
+    }
+
+    .faq-answer {
+      text-align: justify;
+      color: #2d3748;
+      padding-left: 14px;
+    }
+
+    .faq-answer p {
+      margin-bottom: 6px;
+    }
+
+    .faq-answer ul, .faq-answer ol {
+      margin: 6px 0 6px 20px;
+    }
+
+    .faq-answer li {
+      margin-bottom: 3px;
+    }
+
+    code {
+      font-family: "Consolas", "Courier New", monospace;
+      font-size: 9pt;
+      background-color: #edf2f7;
+      padding: 1px 4px;
+      border-radius: 3px;
+      color: #c53030;
+    }
+
+    /* Rodapé impresso */
+    .footer-note {
+      margin-top: 30px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 8px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 8pt;
+      color: #718096;
+      text-align: center;
+      page-break-inside: avoid;
+    }
+
+    .callout-box {
+      background: #ebf8ff;
+      border-left: 3px solid #3182ce;
+      padding: 8px 12px;
+      margin: 8px 0;
+      font-size: 9.5pt;
+      color: #2b6cb0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho Acadêmico / Institucional -->
+  <header class="header-box">
+    <div class="institution-line">Centro Universitário UniFatecie • Bacharelado em Engenharia da Computação</div>
+    <h1 class="doc-title">Documento Oficial de Perguntas Frequentes (FAQ)</h1>
+    <div style="font-size: 10pt; font-weight: 600; color: #4a5568; font-family: sans-serif;">
+      Base de Conhecimento e Treinamento para o Assistente Virtual Inteligente (ChatBOT Alex)
+    </div>
+
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Empresa Modelo:</strong> Livraria & Editora Alexandria Ltda.</div>
+      <div class="meta-item"><strong>Disciplina:</strong> Inteligência Artificial Aplicada (APA)</div>
+      <div class="meta-item"><strong>Acadêmico:</strong> Wallax Figueiredo</div>
+      <div class="meta-item"><strong>Versão do Corpus:</strong> 2.4 — Revisão 2026</div>
+      <div class="meta-item"><strong>Segmento:</strong> Livros Técnicos, Acadêmicos e Colecionador</div>
+      <div class="meta-item"><strong>Repositório:</strong> github.com/WallCod/Faculty-Unifatecie</div>
+    </div>
+  </header>
+
+  <!-- 1. Sobre a Empresa -->
+  <h2 class="section-title">1. Sobre a Empresa, Filosofia e Canais de Contato</h2>
+
+  <div class="faq-item">
+    <div class="faq-question">1.1 O que é a Livraria e Editora Alexandria?</div>
+    <div class="faq-answer">
+      A <strong>Livraria & Editora Alexandria</strong> é uma empresa fundada em 2018 com o propósito de democratizar o acesso à literatura acadêmica, técnica (com foco em Engenharia, Ciência da Computação e Ciências Humanas) e grandes clássicos mundiais com projetos gráficos refinados. Contamos com um acervo físico e digital de mais de 85.000 títulos nacionais e importados, operando por meio de nosso e-commerce oficial e de dois centros de distribuição localizados em Salvador (BA) e São Paulo (SP).
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">1.2 Qual é o horário de atendimento humano e funcionamento geral?</div>
+    <div class="faq-answer">
+      <ul>
+        <li><strong>Atendimento Virtual (ChatBOT Alex):</strong> Disponível 24 horas por dia, 7 dias por semana, para resolução instantânea de dúvidas frequentes, consulta de status de pedidos e recomendações.</li>
+        <li><strong>Atendimento Humano Especializado (Suporte Nível 2):</strong> De segunda a sexta-feira, das 08h00 às 19h00, e aos sábados, das 09h00 às 13h00 (horário de Brasília).</li>
+        <li><strong>Canais Oficiais:</strong>
+          <ul>
+            <li>E-mail de Atendimento: <code>contato@livrariaalexandria.com.br</code></li>
+            <li>WhatsApp de Vendas e Suporte: <code>(73) 99842-1020</code></li>
+            <li>Central Telefônica: <code>0800 720 4040</code></li>
+            <li>Sede Administrativa: Av. Tancredo Neves, nº 1250, Edf. Salvador Prime, 14º Andar, Salvador - BA, CEP 41820-020.</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">1.3 A Livraria Alexandria possui lojas físicas?</div>
+    <div class="faq-answer">
+      Atualmente nosso modelo operacional é prioritariamente digital (<em>e-commerce</em> direto ao consumidor — D2C), além de contarmos com parcerias em feiras literárias, bienais do livro e semanas acadêmicas universitárias. Essa estrutura otimizada nos permite praticar preços até 25% inferiores às livrarias tradicionais de shopping e oferecer fretes expressos para todo o território nacional.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">1.4 Os livros vendidos são novos ou usados?</div>
+    <div class="faq-answer">
+      Todos os livros comercializados em nossa plataforma principal são <strong>100% novos, lacrados de fábrica e diretamente fornecidos pelas editoras parceiras</strong>. Também possuímos uma seção especial denominada <em>"Acervo Alexandria Raridades"</em>, devidamente identificada no anúncio, contendo edições esgotadas, fac-símiles e livros raros revisados e catalogados por especialistas com laudo de conservação.
+    </div>
+  </div>
+
+  <!-- 2. Catálogo e Formatos -->
+  <h2 class="section-title">2. Catálogo de Livros, Formatos de Mídia e Recomendações</h2>
+
+  <div class="faq-item">
+    <div class="faq-question">2.1 Quais formatos de livros estão disponíveis no catálogo?</div>
+    <div class="faq-answer">
+      Oferecemos três modalidades principais de leitura:
+      <ol>
+        <li><strong>Livros Físicos (Capa Dura e Brochura):</strong> Impressos em papel pólen de alta gramatura, com costura resistente e acabamento editorial de luxo.</li>
+        <li><strong>E-books (Livros Digitais):</strong> Formatos <code>.EPUB</code> (com diagramação fluida e ajustável para leitores digitais como Kindle, Kobo e Lev) e <code>.PDF</code> interativo (otimizado para livros técnicos, esquemas de engenharia e fórmulas matemáticas).</li>
+        <li><strong>Audiobooks:</strong> Narrações profissionais gravadas em estúdio com atores e dubladores, distribuídas em áudio de alta fidelidade sem compressão com suporte a marcadores de capítulos.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">2.2 Como recebo o acesso aos livros digitais (E-books e Audiobooks)?</div>
+    <div class="faq-answer">
+      Assim que o pagamento é compensado:
+      <ul>
+        <li>Você recebe um link seguro de download e acesso direto no seu e-mail cadastrado.</li>
+        <li>O arquivo fica permanentemente disponível no painel do cliente, na aba <em>"Minha Biblioteca Digital"</em>.</li>
+        <li>Não há limite de re-downloads para dispositivos de uso pessoal do titular da conta.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">2.3 Como funciona a recomendação personalizada de livros pelo assistente?</div>
+    <div class="faq-answer">
+      Nosso assistente virtual "Alex" é capacitado para realizar curadoria guiada através de perguntas rápidas sobre suas preferências: área de interesse (ex.: Algoritmos, Inteligência Artificial, Ficção Científica ou Filosofia Clássica), nível de profundidade desejado (iniciante, intermediário ou profissional/pesquisador) e formato preferido. Com base nesses parâmetros, o bot consulta os metadados do catálogo e sugere os títulos mais bem avaliados com sinopse e estoque em tempo real.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">2.4 A Alexandria aceita pedidos sob encomenda de livros importados?</div>
+    <div class="faq-answer">
+      Sim! Caso você procure um título estrangeiro ou acadêmico que não conste na loja, basta enviar o título, autor e código ISBN pelo chat ou para <code>encomendas@livrariaalexandria.com.br</code>. Nossa equipe de importação realiza a cotação internacional em até 2 dias úteis, com prazo médio de nacionalização e entrega de 15 a 25 dias úteis.
+    </div>
+  </div>
+
+  <!-- 3. Pagamentos e Cobrança -->
+  <h2 class="section-title">3. Formas de Pagamento, Faturamento e Segurança Financeira</h2>
+
+  <div class="faq-item">
+    <div class="faq-question">3.1 Quais são as formas de pagamento aceitas?</div>
+    <div class="faq-answer">
+      Aceitamos as seguintes modalidades com processamento seguro e criptografado:
+      <ul>
+        <li><strong>Pix Instantâneo:</strong> Com desconto especial de 5% sobre o valor dos produtos e aprovação imediata 24 horas por dia. O QR Code gerado possui validade de 30 minutos.</li>
+        <li><strong>Cartão de Crédito:</strong> Bandeiras Visa, Mastercard, Elo, American Express e Hipercard. Parcelamento em até 6x sem juros (parcela mínima de R$ 30,00) ou até 12x com juros reduzidos da operadora.</li>
+        <li><strong>Boleto Bancário:</strong> Compensação em até 1 a 2 dias úteis após o pagamento em agências bancárias ou internet banking. Vencimento em 3 dias corridos.</li>
+        <li><strong>Faturamento Corporativo e Empenho Acadêmico:</strong> Disponível para universidades públicas, institutos federais, bibliotecas e empresas com CNPJ ativo via emissão de Nota de Empenho ou faturamento a 30 dias mediante aprovação cadastral.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">3.2 O pagamento no site da Alexandria é seguro?</div>
+    <div class="faq-answer">
+      Absolutamente. Nossa plataforma opera com certificação digital SSL/TLS 1.3 de ponta a ponta com criptografia AES de 256 bits. Nenhuma informação confidencial de cartão de crédito é armazenada em nossos servidores; todos os dados transitam diretamente por gateways de pagamento certificados com conformidade internacional <strong>PCI-DSS Nível 1</strong>.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">3.3 Como utilizo um cupom de desconto?</div>
+    <div class="faq-answer">
+      Na tela de finalização de compra (Checkout) ou carrinho:
+      <ol>
+        <li>Localize o campo <em>"Possui cupom de desconto?"</em>.</li>
+        <li>Insira o código promocional (ex.: <code>BEMVINDO10</code> ou <code>UNIFATECIE15</code>).</li>
+        <li>Clique em <em>"Aplicar"</em>. O desconto será calculado e deduzido instantaneamente do subtotal dos produtos antes do cálculo do frete.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">3.4 Quando e como recebo a Nota Fiscal Eletrônica (NF-e)?</div>
+    <div class="faq-answer">
+      A NF-e é emitida automaticamente pelo nosso sistema ERP assim que o pagamento é faturado no centro de distribuição. O arquivo XML e o documento auxiliar (DANFE em PDF) são enviados imediatamente para o seu e-mail de cadastro e também acompanham a embalagem física do pacote impresso.
+    </div>
+  </div>
+
+  <!-- 4. Prazos e Frete -->
+  <h2 class="section-title">4. Prazos de Envio, Modalidades de Frete e Rastreamento</h2>
+
+  <div class="faq-item">
+    <div class="faq-question">4.1 Qual é o prazo de postagem dos pedidos?</div>
+    <div class="faq-answer">
+      <ul>
+        <li><strong>Produtos com estoque imediato:</strong> Postagem em até 24 horas úteis após a confirmação do pagamento. Pedidos aprovados até as 11h00 em dias úteis são frequentemente despachados no mesmo dia.</li>
+        <li><strong>Produtos sob demanda ou encomendas especiais:</strong> O prazo de postagem é informado expressamente na página do produto antes da finalização da compra.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">4.2 Quais são as modalidades de entrega disponíveis?</div>
+    <div class="faq-answer">
+      Trabalhamos com os Correios e as principais transportadoras privadas do Brasil (Jadlog, Total Express, Azul Cargo e Loggi):
+      <ul>
+        <li><strong>Entrega Expressa (Sedex / Aéreo):</strong> Prazo médio de 1 a 3 dias úteis para capitais e regiões metropolitanas.</li>
+        <li><strong>Entrega Econômica (PAC / Rodoviário):</strong> Prazo médio de 4 a 10 dias úteis com o menor custo de frete.</li>
+        <li><strong>Entrega Alexandria Flash (Mesmo Dia / Dia Seguinte):</strong> Disponível para clientes de Salvador, Lauro de Freitas e Grande São Paulo para pedidos faturados até as 12h00.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">4.3 Como funciona a política de Frete Grátis?</div>
+    <div class="faq-answer">
+      Oferecemos frete grátis na modalidade econômica de acordo com as seguintes faixas de compra:
+      <ul>
+        <li><strong>Regiões Sul, Sudeste e Nordeste:</strong> Frete Grátis para pedidos acima de R$ 149,00.</li>
+        <li><strong>Regiões Centro-Oeste e Norte:</strong> Frete Grátis para pedidos acima de R$ 229,00.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">4.4 Como rastrear o meu pedido pelo assistente virtual?</div>
+    <div class="faq-answer">
+      Você pode consultar a qualquer momento enviando o código do pedido diretamente no chat:
+      <ul>
+        <li>Exemplo: <em>"Qual o status do pedido PED-84920?"</em> ou <em>"Rastrear pedido 10423"</em>.</li>
+        <li>O assistente Alex se conecta em tempo real à API de logística e retorna: etapa atual (Pagamento Aprovado, Em Separação, Despachado, Em Trânsito ou Entregue), transportadora responsável, código oficial de rastreio e previsão de entrega.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">4.5 O que acontece se a transportadora não encontrar ninguém no endereço?</div>
+    <div class="faq-answer">
+      As transportadoras parceiras e os Correios realizam até <strong>3 (três) tentativas consecutivas de entrega</strong> em dias úteis subsequentes. Se não houver pessoa maior de 18 anos autorizada para receber o pacote:
+      <ul>
+        <li>No caso dos Correios, o pacote é encaminhado para a agência mais próxima para retirada presencial em até 7 dias corridos.</li>
+        <li>No caso de transportadoras privadas, nosso time de logística entra em contato por WhatsApp e telefone para confirmar referências e agendar uma nova entrega sem custo adicional.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 5. Pós-Venda e Trocas -->
+  <h2 class="section-title">5. Pós-Venda: Trocas, Devoluções, Avarias e Garantias</h2>
+
+  <div class="faq-item">
+    <div class="faq-question">5.1 Qual é o prazo para solicitar troca ou devolução por arrependimento?</div>
+    <div class="faq-answer">
+      Em total conformidade com o <strong>Artigo 49 do Código de Defesa do Consumidor (CDC)</strong>, o cliente tem direito a desistir da compra ou solicitar a devolução de produtos físicos em até <strong>7 (sete) dias corridos</strong>, contados a partir da data de recebimento do pacote em seu endereço.
+      <ul>
+        <li>O produto deve ser devolvido em sua embalagem original, sem sinais de uso indevido, rasgos ou páginas grifadas, acompanhado da respectiva Nota Fiscal.</li>
+        <li>Os custos de frete reverso para devolução por direito de arrependimento são <strong>100% arcados pela Livraria Alexandria</strong>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">5.2 O que fazer se o livro chegar com defeito gráfico ou avaria no transporte?</div>
+    <div class="faq-answer">
+      Caso seu exemplar apresente páginas em branco, encadernação invertida, folhas faltando ou tenha sido danificado durante o transporte (cantos amassados, rasgos na capa):
+      <ol>
+        <li>Tire fotos nítidas do defeito identificado e da etiqueta do pacote.</li>
+        <li>Inicie o atendimento com o bot Alex dizendo <em>"Meu livro veio com defeito"</em> ou envie as imagens para <code>suporte@livrariaalexandria.com.br</code> com o número do seu pedido.</li>
+        <li>O prazo para reclamação de vícios aparentes é de até <strong>30 dias corridos</strong>.</li>
+        <li>A Livraria Alexandria providencia o envio imediato de um novo exemplar sem custo ou a restituição integral do valor pago.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">5.3 Como funciona o processo de envio reverso (Logística Reversa)?</div>
+    <div class="faq-answer">
+      Após a aprovação do pedido de troca pelo suporte, geramos um <strong>Código de Autorização de Postagem dos Correios (e-ticket)</strong> com validade de 10 dias corridos. Você embala o livro em uma caixa resistente, anexa a Nota Fiscal e leva a encomenda a qualquer agência dos Correios sem pagar nenhuma taxa de postagem no balcão.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">5.4 Em quanto tempo o estorno ou reembolso é processado?</div>
+    <div class="faq-answer">
+      Após a chegada do produto devolvido em nosso Centro de Distribuição e a conferência de qualidade (realizada em até 2 dias úteis):
+      <ul>
+        <li><strong>Pagamentos via Pix ou Boleto:</strong> O valor é transferido para a conta bancária do titular em até 24 horas úteis via chave Pix.</li>
+        <li><strong>Pagamentos via Cartão de Crédito:</strong> O estorno é solicitado imediatamente à administradora do cartão, sendo refletido na fatura atual ou subsequente.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 6. Privacidade e LGPD -->
+  <h2 class="section-title">6. Conta do Usuário, Privacidade, LGPD e Suporte Técnico</h2>
+
+  <div class="faq-item">
+    <div class="faq-question">6.1 Como alterar meus dados cadastrais ou endereço de entrega?</div>
+    <div class="faq-answer">
+      Você pode gerenciar suas informações diretamente em <em>"Minha Conta > Meus Endereços"</em> no site. Se o pedido já tiver sido faturado e despachado, a alteração de endereço no cadastro só valerá para as próximas compras. Para alterações emergenciais antes do despacho, solicite intervenção imediata no chat com o bot Alex.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">6.2 Esqueci minha senha de acesso. Como recuperá-la?</div>
+    <div class="faq-answer">
+      Clique em <em>"Entrar"</em> e selecione a opção <em>"Esqueci minha senha"</em>. Digite o e-mail cadastrado e em segundos você receberá um link temporário com token seguro para redefinição de credencial com validade de 1 hora.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">6.3 Como a Livraria Alexandria protege meus dados pessoais (LGPD)?</div>
+    <div class="faq-answer">
+      Nossa empresa adota rigorosamente as diretrizes da <strong>Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD)</strong>:
+      <ul>
+        <li>Coletamos apenas os dados estritamente necessários para o cumprimento do contrato de compra e venda, emissão de nota fiscal e entrega física das encomendas.</li>
+        <li><strong>Não comercializamos, alugamos nem compartilhamos</strong> seus dados pessoais com terceiros para fins de marketing sem consentimento explícito.</li>
+        <li>Canal do Encarregado de Proteção de Dados (DPO): <code>dpo@livrariaalexandria.com.br</code>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">6.4 O que fazer se o site apresentar erro ao finalizar a compra?</div>
+    <div class="faq-answer">
+      Verifique se sua conexão com a internet está estável, atualize a página (<code>Ctrl + F5</code>) para limpar caches ou tente utilizar uma aba anônima. Se o erro persistir, acione o assistente virtual Alex e informe <em>"Erro no checkout"</em> para geração de link alternativo seguro.
+    </div>
+  </div>
+
+  <!-- 7. Glossário de Mapeamento para IA -->
+  <h2 class="section-title">7. Glossário de Mapeamento de Intenções para o ChatBOT</h2>
+
+  <div class="faq-item">
+    <div class="faq-question">7.1 Dicionário de Mapeamento Léxico e Entidades</div>
+    <div class="faq-answer">
+      Para orientar a indexação semântica e vetorização do motor de PLN (TF-IDF e Cosseno), destacamos os conjuntos de tokens com maior densidade discriminativa:
+      <ul>
+        <li><code>consultar_pedido</code>: pedido, rastreio, rastrear, código de rastreamento, status, onde está, entrega, atraso, transportadora, correios.</li>
+        <li><code>solicitar_troca</code>: troca, devolução, devolver, avaria, danificado, defeito, amassado, rasgado, desistir, arrependimento, estorno.</li>
+        <li><code>duvida_pagamento</code>: pix, cartão, crédito, boleto, parcelamento, parcelas, juros, sem juros, nota fiscal, danfe, xml, comprovante.</li>
+        <li><code>duvida_catalogo</code>: livro, autor, isbn, edição, lançamento, capa dura, brochura, ebook, epub, pdf, audiobook, estoque, recomendação.</li>
+        <li><code>duvida_frete</code>: valor do frete, frete grátis, sedex, pac, quanto custa o envio, prazo de entrega, dias úteis, salvador, são paulo.</li>
+        <li><code>falar_atendente</code>: atendente, humano, pessoa real, falar com gente, suporte nível 2, transferir.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="footer-note">
+    Documento oficial submetido como requisito avaliativo da Atividade Prática de Aprendizagem (APA) — Centro Universitário UniFatecie.<br>
+    Engenharia da Computação • Acadêmico: Wallax Figueiredo • Repositório: github.com/WallCod/Faculty-Unifatecie
+  </footer>
+
+</body>
+</html>

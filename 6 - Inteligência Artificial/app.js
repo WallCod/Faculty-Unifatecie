@@ -899,3 +899,4 @@ class ChatbotApp {
 window.addEventListener("DOMContentLoaded", () => {
   window.chatApp = new ChatbotApp();
 });
+
