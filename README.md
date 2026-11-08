@@ -32,7 +32,19 @@ Atualmente na **reta final da graduação em Engenharia da Computação**, com p
 
 ---
 
-## 🌟 Atividade em Destaque (Avaliação Atual)
+## 🌟 Atividades em Destaque (Avaliações Recentes)
+
+### [🦉 6 - Inteligência Artificial: Assistente Virtual Inteligente (APA)](./6%20-%20Intelig%C3%AAncia%20Artificial)
+> **Tema:** Processamento de Linguagem Natural (PLN), Vetorização TF-IDF, Similaridade por Cosseno, Engenharia de Persona e Governança Contínua de Dados.
+
+- **Assistente Virtual Interativo:** Protótipo web completo do bot **Alex**, com motor de PLN em JavaScript nativo executando no navegador.
+- **Recursos Práticos & Interativos:** Rastreamento dinâmico de encomendas em tempo real (ERP Mock), quiz interativo de curadoria e recomendação literária, limiares de confiança (*thresholds*) e telemetria de PLN em tempo real.
+- **Documento FAQ Extenso (+3 Páginas):** Base de conhecimento oficial da Livraria & Editora Alexandria com mais de 2.300 palavras:
+  👉 **[Acesse o FAQ Completo da Empresa Modelo (FAQ_EMPRESA_MODELO.md)](./6%20-%20Intelig%C3%AAncia%20Artificial/FAQ_EMPRESA_MODELO.md)**
+- **Relatório Técnico Oficial da APA:** Fundamentação de Engenharia da Computação respondendo a todos os requisitos:
+  👉 **[Acesse o Relatório Técnico da APA de IA (PLANO_ASSISTENTE_VIRTUAL.md)](./6%20-%20Intelig%C3%AAncia%20Artificial/PLANO_ASSISTENTE_VIRTUAL.md)**
+
+---
 
 ### [📁 5 - Desenvolvimento Front-End: Catálogo Online Responsivo & Interativo](./5%20-%20Desenvolvimento%20Front-End)
 > **Tema:** Funcionamento da Web, HTML5 Semântico, CSS3 Responsivo, JavaScript/DOM, Consumo de API RESTful JSON e Modernização SPA.
@@ -53,11 +65,13 @@ Atualmente na **reta final da graduação em Engenharia da Computação**, com p
 | **[3 - Prática Liguagem C](./3%20-%20Pr%C3%A1tica%20Liguagem%20C)** | Algoritmos & Baixo Nível | `Linguagem C`, `GCC`, `Estrutura de Dados` | Gerenciamento de memória, ponteiros, vetores e estruturas aplicadas. |
 | **[4 - Prática Liguagem JAVA](./4%20-%20Pr%C3%A1tica%20Liguagem%20JAVA)** | Paradigma Orientado a Objetos | `Java`, `JVM`, `Testes de Performance` | POO avançada, encapsulamento, concorrência e testes comparativos de performance. |
 | **[5 - Desenvolvimento Front-End](./5%20-%20Desenvolvimento%20Front-End)** | Engenharia de Software Front-End | `HTML Semântico`, `CSS Grid/Flexbox`, `Async/Fetch REST`, `SPA` | **Catálogo online da livraria**, consumo de API JSON, WAI-ARIA e planejamento SPA. |
+| **[6 - Inteligência Artificial](./6%20-%20Intelig%C3%AAncia%20Artificial)** | Inteligência Artificial & PLN | `PLN / NLP`, `TF-IDF`, `Cosseno`, `ChatBOT`, `JavaScript` | **Assistente virtual inteligente (APA)**, relatório conceitual, FAQ extenso e protótipo interativo. |
 
 ---
 
 ## 🛠️ Stack Tecnológica Dominada no Curso
 
+- **Inteligência Artificial & PLN:** Processamento de Linguagem Natural clássico e estatístico, TF-IDF, Similaridade por Cosseno, Stemming heurístico em PT-BR, Normalização léxica, Engenharia de Persona e Governança de Dados
 - **Linguagens & Baixo Nível:** C, Java, JavaScript (ES6+), TypeScript, SQL
 - **Web & Front-End:** HTML5 Semântico, CSS3 Moderno (Grid, Flexbox, Custom Properties), React, Vite, WAI-ARIA
 - **Arquitetura & Engenharia:** Modelo Cliente-Servidor, Protocolos HTTP/HTTPS, DNS, APIs RESTful, MVC, Padrões de Projeto (GoF), Clean Code
@@ -73,12 +87,20 @@ Atualmente na **reta final da graduação em Engenharia da Computação**, com p
    cd Faculty-Unifatecie
    ```
 
-2. **Para executar a aplicação de Front-End:**
+2. **Para executar a aplicação do Assistente Virtual de IA (Módulo 6):**
+   ```bash
+   cd "6 - Inteligência Artificial"
+   # Usando Python:
+   python -m http.server 8080
+   # Ou com Node.js:
+   npx serve .
+   ```
+   Abra `http://localhost:8080` no seu navegador.
+
+3. **Para executar a aplicação de Front-End (Módulo 5):**
    ```bash
    cd "5 - Desenvolvimento Front-End"
-   # Usando Node.js:
-   npx serve .
-   # Ou com Python:
+   # Usando Python:
    python -m http.server 3000
    ```
    Abra `http://localhost:3000` no seu navegador.

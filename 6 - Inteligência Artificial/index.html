@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex — Assistente Virtual Inteligente | Livraria Alexandria</title>
+  <meta name="description" content="Protótipo interativo de ChatBOT para atendimento ao cliente da Livraria & Editora Alexandria utilizando técnicas de Processamento de Linguagem Natural (PLN).">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Barra Superior / Header Corporativo -->
+    <header class="top-nav">
+      <div class="brand-group">
+        <div class="brand-logo">🏛️</div>
+        <div>
+          <h1 class="brand-title">Livraria & Editora Alexandria</h1>
+          <p class="brand-subtitle">Centro Universitário UniFatecie • Bacharelado em Engenharia da Computação</p>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <a href="./PLANO_ASSISTENTE_VIRTUAL.md" target="_blank" class="nav-btn" title="Ler Relatório Acadêmico">
+          📄 Relatório da APA
+        </a>
+        <a href="./FAQ_EMPRESA_MODELO.md" target="_blank" class="nav-btn" title="Consultar FAQ Completo">
+          📚 Base FAQ (+3 págs)
+        </a>
+        <button id="btnOpenMetrics" class="nav-btn accent-btn" title="Painel de Telemetria de IA">
+          📊 Painel de PLN
+        </button>
+      </div>
+    </header>
+
+    <!-- Conteiner Principal do Chatbot -->
+    <main class="chat-container">
+      <!-- Cabeçalho do Chat -->
+      <section class="chat-header">
+        <div class="bot-profile">
+          <div class="bot-avatar">
+            <span>🦉</span>
+            <span class="status-indicator" title="Online 24/7"></span>
+          </div>
+          <div class="bot-info">
+            <div class="bot-name-row">
+              <h2>Alex</h2>
+              <span class="bot-badge">IA Virtual • Concierge</span>
+            </div>
+            <p class="bot-status-text">Atendimento Inteligente da Livraria Alexandria</p>
+          </div>
+        </div>
+        <div class="chat-header-actions">
+          <button id="btnResetChat" class="icon-btn" title="Reiniciar Conversa">🔄 Reiniciar</button>
+        </div>
+      </section>
+
+      <!-- Painel Rápido de Atalhos (Chips de Intenções Frequentes) -->
+      <div class="quick-chips-bar" aria-label="Ações Rápidas">
+        <span class="chips-label">Atalhos:</span>
+        <button class="chip-btn" data-action="track-order">📦 Rastrear Pedido</button>
+        <button class="chip-btn" data-action="book-quiz">📖 Recomendar Livro</button>
+        <button class="chip-btn" data-query="quais as formas de pagamento aceitas?">💳 Pagamentos</button>
+        <button class="chip-btn" data-query="como funciona a politica de frete gratis?">🚚 Frete Grátis</button>
+        <button class="chip-btn" data-query="como solicitar a troca de um livro com defeito?">🔄 Trocas & Avarias</button>
+        <button class="chip-btn" data-query="quero falar com um atendente humano">👤 Atendente Humano</button>
+      </div>
+
+      <!-- Área de Rolagem das Mensagens -->
+      <section class="messages-viewport" id="messagesViewport" aria-live="polite">
+        <!-- As mensagens serão injetadas via JavaScript -->
+      </section>
+
+      <!-- Barra de Input e Envio -->
+      <footer class="chat-input-area">
+        <form id="chatForm" class="input-form" autocomplete="off">
+          <input 
+            type="text" 
+            id="userInput" 
+            placeholder="Digite sua dúvida ou use os atalhos (ex: 'como rastrear meu pedido?')..." 
+            aria-label="Mensagem para o assistente virtual"
+            required
+          />
+          <button type="submit" id="btnSend" class="send-btn" aria-label="Enviar mensagem">
+            <span>Enviar</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z"/>
+            </svg>
+          </button>
+        </form>
+        <div class="input-footer-note">
+          <small>💡 Motor de PLN baseado em Tokenização, Stemming em PT-BR e Similaridade por Cosseno (TF-IDF).</small>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Modal de Métricas de IA & Auditoria de PLN -->
+  <div id="metricsModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalTitle">📊 Telemetria do Motor de PLN e Governança</h3>
+        <button id="btnCloseModal" class="icon-btn close-btn" aria-label="Fechar modal">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="metrics-grid">
+          <div class="metric-box">
+            <span class="metric-val" id="metricTotal">0</span>
+            <span class="metric-label">Consultas Processadas</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-val" id="metricMatchRate">100%</span>
+            <span class="metric-label">Taxa de Resolução Direta</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-val" id="metricFallbacks">0</span>
+            <span class="metric-label">Fallbacks Disparados</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-val" id="metricAvgSim">0.00</span>
+            <span class="metric-label">Similaridade Média</span>
+          </div>
+        </div>
+
+        <h4 class="modal-subtitle">Pipeline em Tempo Real da Última Consulta</h4>
+        <div class="pipeline-debugger" id="pipelineDebugger">
+          <p class="empty-state">Nenhuma consulta realizada nesta sessão ainda. Digite algo no chat para inspecionar!</p>
+        </div>
+
+        <h4 class="modal-subtitle">Log de Dúvidas Não Resolvidas (Para Curadoria Quinzenal)</h4>
+        <div class="unresolved-log" id="unresolvedLog">
+          <p class="empty-state">Nenhum fallback registrado. O bot respondeu a todas com sucesso até o momento!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

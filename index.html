@@ -2,41 +2,178 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url='./5 - Desenvolvimento Front-End/index.html'">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UniFatecie | Redirecionando para o Catálogo Front-End...</title>
-  <script>
-    window.location.href = './5%20-%20Desenvolvimento%20Front-End/index.html';
-  </script>
+  <title>UniFatecie | Portfólio de Engenharia da Computação — Wallax Figueiredo</title>
   <style>
+    :root {
+      --bg: #0b0f17;
+      --card: #131d2e;
+      --card-border: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-amber: #f59e0b;
+      --accent-blue: #3b82f6;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background: #0b0f17;
-      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      margin: 0;
-      text-align: center;
-      padding: 1.5rem;
+      padding: 2rem 1rem;
     }
-    a {
+    .container {
+      max-width: 860px;
+      width: 100%;
+      text-align: center;
+    }
+    .badge-uni {
       display: inline-block;
-      margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
-      background: #f59e0b;
-      color: #0b0f17;
-      text-decoration: none;
+      padding: 0.35rem 0.85rem;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: var(--accent-amber);
+      font-size: 0.8rem;
       font-weight: 700;
-      border-radius: 8px;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.5;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      text-align: left;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-blue);
+      box-shadow: 0 12px 24px -10px rgba(59, 130, 246, 0.3);
+    }
+    .card.highlight {
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+    .card.highlight:hover {
+      border-color: var(--accent-amber);
+      box-shadow: 0 12px 24px -10px rgba(245, 158, 11, 0.3);
+    }
+    .card-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+    .card-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.35rem;
+      display: block;
+    }
+    .tag-ai { color: var(--accent-amber); }
+    .tag-fe { color: #60a5fa; }
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    p.desc {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+    .card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent-amber);
+    }
+    .card:not(.highlight) .card-cta {
+      color: var(--accent-blue);
+    }
+    footer {
+      margin-top: 3rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    footer a {
+      color: var(--text);
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <h2>Carregando o Catálogo da Livraria Alexandria...</h2>
-  <p>Se você não for redirecionado automaticamente em alguns instantes, clique no link abaixo:</p>
-  <a href="./5 - Desenvolvimento Front-End/index.html">Acessar Catálogo Front-End &rarr;</a>
+  <div class="container">
+    <div class="badge-uni">Centro Universitário UniFatecie</div>
+    <h1>Engenharia da Computação — Portfólio</h1>
+    <p class="subtitle">Selecione uma das aplicações práticas desenvolvidas ao longo das avaliações do curso:</p>
+
+    <div class="grid">
+      <!-- Módulo 6: Inteligência Artificial (APA) -->
+      <a href="./6%20-%20Intelig%C3%AAncia%20Artificial/index.html" class="card highlight">
+        <div>
+          <div class="card-icon">🦉</div>
+          <span class="card-tag tag-ai">Módulo 6 • Avaliação Atual (APA)</span>
+          <h2>Assistente Virtual Inteligente (Alex)</h2>
+          <p class="desc">Plano e protótipo interativo de ChatBOT com Processamento de Linguagem Natural (PLN), TF-IDF, similaridade de cosseno, rastreador de pedidos e recomendador guiado.</p>
+        </div>
+        <div class="card-cta">
+          <span>Abrir Assistente Virtual Alex &rarr;</span>
+        </div>
+      </a>
+
+      <!-- Módulo 5: Desenvolvimento Front-End -->
+      <a href="./5%20-%20Desenvolvimento%20Front-End/index.html" class="card">
+        <div>
+          <div class="card-icon">📚</div>
+          <span class="card-tag tag-fe">Módulo 5 • Avaliação Prática</span>
+          <h2>Catálogo Livraria Alexandria</h2>
+          <p class="desc">Aplicação web responsiva com busca em tempo real, debounce, filtros dinâmicos, modais acessíveis e consumo assíncrono de API RESTful JSON.</p>
+        </div>
+        <div class="card-cta">
+          <span>Acessar Catálogo Front-End &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <footer>
+      <p>Desenvolvido por <strong>Wallax Figueiredo</strong> • <a href="https://github.com/WallCod/Faculty-Unifatecie" target="_blank">Repositório no GitHub</a></p>
+    </footer>
+  </div>
 </body>
 </html>
