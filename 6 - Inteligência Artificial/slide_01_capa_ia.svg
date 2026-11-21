@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080"
+     data-pptx-emu-w="18288000" data-pptx-emu-h="10287000" data-pptx-style="academic-research">
+  <defs>
+    <linearGradient id="acad-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0e17" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo com grid sutil -->
+  <rect width="1920" height="1080" fill="url(#acad-bg)" />
+  <g stroke="#334155" stroke-width="1" opacity="0.2">
+    <line x1="120" y1="0" x2="120" y2="1080" />
+    <line x1="1800" y1="0" x2="1800" y2="1080" />
+    <line x1="0" y1="140" x2="1920" y2="140" />
+    <line x1="0" y1="940" x2="1920" y2="940" />
+  </g>
+
+  <!-- Brasão / Topo Institucional -->
+  <g id="!shape-inst-header">
+    <text x="120" y="90" fill="#38bdf8" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3">CENTRO UNIVERSITÁRIO UNIFATECIE // ENGENHARIA DA COMPUTAÇÃO</text>
+    <text x="120" y="118" fill="#94a3b8" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="600">DISCIPLINA: INTELIGÊNCIA ARTIFICIAL • TRABALHO DE CONCLUSÃO DE MÓDULO</text>
+  </g>
+
+  <!-- Título Principal & Subtítulo -->
+  <g id="!shape-main-title">
+    <rect x="120" y="320" width="12" height="180" fill="#38bdf8" rx="4" />
+    <text x="160" y="380" fill="#f8fafc" font-family="'Georgia', serif" font-size="52" font-weight="800">ASSISTENTE VIRTUAL INTELIGENTE (APA ALEX)</text>
+    <text x="160" y="440" fill="#38bdf8" font-family="'Segoe UI', Arial, sans-serif" font-size="28" font-weight="600">Projeto de Inteligência Artificial e Processamento de Linguagem Natural</text>
+    <text x="160" y="490" fill="#94a3b8" font-family="'Segoe UI', Arial, sans-serif" font-size="20">Arquitetura de RAG, Orquestração de Agentes, LLM e Pipeline de Inferência Local</text>
+  </g>
+
+  <!-- Identificação do Acadêmico -->
+  <g id="!shape-author-card">
+    <rect x="120" y="700" width="600" height="140" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    <text x="150" y="740" fill="#94a3b8" font-family="'Segoe UI', Arial, sans-serif" font-size="14" font-weight="700">ACADÊMICO RESPONSÁVEL:</text>
+    <text x="150" y="775" fill="#f8fafc" font-family="'Segoe UI', Arial, sans-serif" font-size="24" font-weight="800">Wallax Figueiredo</text>
+    <text x="150" y="810" fill="#38bdf8" font-family="'Segoe UI', Arial, sans-serif" font-size="15">Graduando em Engenharia da Computação • 2026</text>
+  </g>
+
+  <!-- Rodapé -->
+  <g id="!shape-footer">
+    <text x="120" y="990" fill="#64748b" font-family="'Segoe UI', Arial, sans-serif" font-size="14">UniFatecie • Polo Paranavaí / Tecnologias AlphaLabs</text>
+    <text x="1800" y="990" fill="#64748b" font-family="'Segoe UI', Arial, sans-serif" font-size="14" text-anchor="end">Slide 1/3 • DrawingML 16:9 Nativo</text>
+  </g>
+</svg>
