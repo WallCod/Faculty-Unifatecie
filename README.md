@@ -34,6 +34,16 @@ Atualmente na **reta final da graduação em Engenharia da Computação**, com p
 
 ## 🌟 Atividades em Destaque (Avaliações Recentes)
 
+### [📊 7 - Projeto Integrador III: Consultoria Empresarial e Reestruturação Operacional (APA)](./7%20-%20Projeto%20Integrador%20III)
+> **Tema:** Consultoria Empresarial, Diagnóstico Organizacional, Diagrama de Ishikawa (6M), 5 Porquês, Gestão de Mudança (Kotter), Matriz 5W2H e Governança por KPIs.
+
+- **Estudo de Caso:** Reestruturação estratégica da Empresa XYZ (Varejo de Eletrônicos).
+- **Entregáveis Completos:** Relatório técnico oficial respondendo às 3 questões práticas com diagramas, matriz de soluções e plano de sustentação operacional.
+  👉 **[Acesse o Relatório Técnico da APA (ATIVIDADE_PRATICA_APRENDIZAGEM.md)](./7%20-%20Projeto%20Integrador%20III/ATIVIDADE_PRATICA_APRENDIZAGEM.md)**  
+  👉 **[Versão Pronta para Impressão / PDF (documento_para_impressao.html)](./7%20-%20Projeto%20Integrador%20III/documento_para_impressao.html)**
+
+---
+
 ### [🦉 6 - Inteligência Artificial: Assistente Virtual Inteligente (APA)](./6%20-%20Intelig%C3%AAncia%20Artificial)
 > **Tema:** Processamento de Linguagem Natural (PLN), Vetorização TF-IDF, Similaridade por Cosseno, Engenharia de Persona e Governança Contínua de Dados.
 
@@ -66,6 +76,7 @@ Atualmente na **reta final da graduação em Engenharia da Computação**, com p
 | **[4 - Prática Liguagem JAVA](./4%20-%20Pr%C3%A1tica%20Liguagem%20JAVA)** | Paradigma Orientado a Objetos | `Java`, `JVM`, `Testes de Performance` | POO avançada, encapsulamento, concorrência e testes comparativos de performance. |
 | **[5 - Desenvolvimento Front-End](./5%20-%20Desenvolvimento%20Front-End)** | Engenharia de Software Front-End | `HTML Semântico`, `CSS Grid/Flexbox`, `Async/Fetch REST`, `SPA` | **Catálogo online da livraria**, consumo de API JSON, WAI-ARIA e planejamento SPA. |
 | **[6 - Inteligência Artificial](./6%20-%20Intelig%C3%AAncia%20Artificial)** | Inteligência Artificial & PLN | `PLN / NLP`, `TF-IDF`, `Cosseno`, `ChatBOT`, `JavaScript` | **Assistente virtual inteligente (APA)**, relatório conceitual, FAQ extenso e protótipo interativo. |
+| **[7 - Projeto Integrador III](./7%20-%20Projeto%20Integrador%20III)** | Gestão Estratégica & Consultoria | `Gestão de Mudança (Kotter)`, `Ishikawa / 5W2H`, `OKRs / KPIs`, `PDCA` | **Consultoria Empresarial (APA)**, diagnóstico de causa-raiz, reestruturação operacional e governança de varejo eletrônico. |
 
 ---
 

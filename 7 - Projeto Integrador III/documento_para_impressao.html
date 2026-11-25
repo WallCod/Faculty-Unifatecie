@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>APA - Projeto Integrador III - Consultoria Empresarial Empresa XYZ</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.6;
+      color: #1e293b;
+      background: #f1f5f9;
+      padding: 20px 0;
+    }
+
+    .page-container {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 40px 48px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      border-radius: 6px;
+    }
+
+    /* Cabeçalho Acadêmico e Institucional */
+    .header-box {
+      border-bottom: 2px solid #1e3a8a;
+      padding-bottom: 14px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .inst-name {
+      font-size: 9.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #475569;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .course-name {
+      font-size: 13pt;
+      font-weight: 800;
+      color: #1e3a8a;
+    }
+
+    .discipline-name {
+      font-size: 11pt;
+      font-weight: 600;
+      color: #0f172a;
+      margin-top: 3px;
+    }
+
+    .title-area {
+      text-align: center;
+      margin: 22px 0;
+    }
+
+    .title-area h1 {
+      font-size: 16pt;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+
+    .title-area h2 {
+      font-size: 11.5pt;
+      font-weight: 600;
+      color: #2563eb;
+      margin-bottom: 12px;
+    }
+
+    .meta-box {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 9pt;
+      color: #334155;
+      margin-top: 10px;
+    }
+
+    .case-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-left: 5px solid #2563eb;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin: 20px 0;
+      font-size: 9.5pt;
+    }
+
+    .case-box h3 {
+      font-size: 10.5pt;
+      color: #1e3a8a;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .case-box p {
+      margin-bottom: 0;
+      font-style: italic;
+      text-align: justify;
+    }
+
+    h2.section-title {
+      font-size: 12.5pt;
+      font-weight: 700;
+      color: #0f172a;
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 6px;
+      margin-top: 26px;
+      margin-bottom: 12px;
+    }
+
+    h3.sub-title {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      text-align: justify;
+    }
+
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    li {
+      margin-bottom: 5px;
+      text-align: justify;
+    }
+
+    /* Tabelas */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 9pt;
+    }
+
+    th {
+      background-color: #1e3a8a;
+      color: #ffffff;
+      font-weight: 600;
+      text-align: left;
+      padding: 8px 10px;
+      border: 1px solid #1e3a8a;
+    }
+
+    td {
+      padding: 7px 10px;
+      border: 1px solid #cbd5e1;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    .flowchart-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 12px;
+      margin: 14px 0;
+      font-family: Consolas, monospace;
+      font-size: 8.5pt;
+      line-height: 1.4;
+      white-space: pre;
+      overflow-x: auto;
+      text-align: center;
+    }
+
+    .footer-sign {
+      border-top: 1.5px solid #cbd5e1;
+      margin-top: 36px;
+      padding-top: 18px;
+      text-align: center;
+      font-size: 9.5pt;
+      color: #475569;
+    }
+
+    .footer-sign strong {
+      color: #1e3a8a;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .page-container {
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+      .page-break {
+        page-break-after: always;
+      }
+      .no-print {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-container">
+
+  <!-- Cabeçalho Institucional -->
+  <div class="header-box">
+    <div class="inst-name">Centro Universitário UniFatecie</div>
+    <div class="course-name">Bacharelado em Engenharia da Computação</div>
+    <div class="discipline-name">Disciplina: Projeto Integrador III</div>
+  </div>
+
+  <!-- Título Principal -->
+  <div class="title-area">
+    <h1>ATIVIDADE PRÁTICA DE APRENDIZAGEM (APA)</h1>
+    <h2>Relatório Técnico de Consultoria Empresarial e Reestruturação Operacional</h2>
+    <div class="meta-box">
+      <span><strong>Acadêmico:</strong> Wallax Figueiredo</span>
+      <span>•</span>
+      <span><strong>Estudo de Caso:</strong> Empresa XYZ (Varejo de Eletrônicos)</span>
+      <span>•</span>
+      <span><strong>Ano Letivo:</strong> 2026</span>
+    </div>
+  </div>
+
+  <!-- Enunciado do Estudo de Caso -->
+  <div class="case-box">
+    <h3>📋 Estudo de Caso Fictício: Necessidade de Consultoria Empresarial</h3>
+    <p>
+      "A empresa XYZ é uma empresa de varejo que vende produtos eletrônicos. Ela está enfrentando uma série de desafios, incluindo baixas vendas, aumento de reclamações de clientes, alta rotatividade de funcionários e falta de inovação em seus produtos. A empresa está preocupada com a sua posição no mercado e acredita que precisa de ajuda para resolver esses problemas e melhorar seu desempenho geral. Eles decidem contratar uma consultoria empresarial para ajudá-los a enfrentar esses desafios."
+    </p>
+  </div>
+
+  <!-- Sumário Executivo -->
+  <h2 class="section-title">1. Sumário Executivo e Contextualização do Cenário</h2>
+  <p>
+    O presente relatório técnico apresenta uma solução metodológica e analítica para orientar a intervenção consultiva na <strong>Empresa XYZ</strong>. A organização atua no setor varejista de eletrônicos — caracterizado pela dinâmica de obsolescência tecnológica veloz, margens comprimidas e concorrência acirrada com os grandes ecossistemas de e-commerce e <em>marketplaces</em> digitais.
+  </p>
+  <p>
+    A análise diagnóstica inicial evidencia um quadro sistêmico de interdependência negativa: a estagnação de portfólio reduz as vendas, gerando sobrecarga e metas inatingíveis que desmotivam os funcionários (provocando elevado <em>turnover</em>). A equipe de vendas desqualificada e o suporte deficiente culminam em frustração do cliente e escalada de reclamações, retroalimentando a deterioração dos resultados.
+  </p>
+
+  <!-- Questão 1 -->
+  <h2 class="section-title">2. Questão Prática 1: Principais Etapas da Consultoria Empresarial</h2>
+  <p>
+    Para que a consultoria gere valor real e sustentável, o consultor deve estruturar a intervenção em <strong>5 grandes etapas metodológicas</strong>:
+  </p>
+
+  <div class="flowchart-box">
+[Etapa 1: Alinhamento e Contratação] ➔ [Etapa 2: Diagnóstico Organizacional As-Is]
+                    │
+                    ▼
+[Etapa 3: Planejamento Estratégico To-Be] ➔ [Etapa 4: Implementação Guiada (Kotter/5W2H)]
+                    │
+                    ▼
+[Etapa 5: Monitoramento Contínuo (PDCA / KPIs) & Encerramento]
+  </div>
+
+  <h3 class="sub-title">Etapa 1: Entrada, Sensibilização e Alinhamento de Expectativas</h3>
+  <ul>
+    <li><strong>Alinhamento Estratégico:</strong> Reunião inicial (<em>Kick-off</em>) com acionistas e diretoria para delimitar o escopo contratual, expectativas e metas macro da consultoria.</li>
+    <li><strong>Matriz de Governança:</strong> Instituição do comitê de patrocínio (<em>Sponsorship</em>) e definição da Matriz RACI para garantir clareza nas tomadas de decisão.</li>
+    <li><strong>Sensibilização do Corpo Operacional:</strong> Diálogo transparente com os colaboradores para eliminar temores de demissões sumárias, posicionando o consultor como parceiro de melhoria e suporte.</li>
+  </ul>
+
+  <h3 class="sub-title">Etapa 2: Diagnóstico Organizacional Aprofundado (Mapeamento As-Is)</h3>
+  <ul>
+    <li><strong>Auditoria Quantitativa:</strong> Análise de relatórios de vendas dos últimos 24 meses, margens de contribuição, índice de conversão de loja, indicadores de <em>turnover</em>, absenteísmo e relatórios de chamados do SAC.</li>
+    <li><strong>Auditoria Qualitativa (Gemba Walk):</strong> Observação direta dos processos no chão de loja, entrevistas individuais com colaboradores e grupos focais com clientes promotores e detratores.</li>
+    <li><strong>Modelagem Estratégica:</strong> Aplicação das ferramentas consagradas da administração: Análise SWOT, 5 Forças de Porter e Matriz BCG para identificar gargalos e vantagens competitivas.</li>
+  </ul>
+
+  <h3 class="sub-title">Etapa 3: Planejamento Estratégico e Formulação das Soluções (Desenho To-Be)</h3>
+  <ul>
+    <li><strong>Definição de OKRs (Objectives and Key Results):</strong> Alinhamento de metas ágeis, trimestrais e transparentes para os departamentos comercial, suporte, RH e produtos.</li>
+    <li><strong>Redesenho de Processos:</strong> Remodelagem da jornada do cliente (CX), simplificação dos protocolos de troca/garantia e criação de processos ágeis de compras e curadoria.</li>
+    <li><strong>Priorização e Planos de Ação:</strong> Utilização da Matriz GUT (Gravidade, Urgência e Tendência) para elencar prioridades e elaboração dos planos táticos via metodologia 5W2H.</li>
+  </ul>
+
+  <h3 class="sub-title">Etapa 4: Implementação Guiada e Gestão da Mudança (Execution)</h3>
+  <ul>
+    <li><strong>Gestão da Mudança Organizacional:</strong> Aplicação do modelo de 8 passos de John Kotter e metodologia ADKAR para conduzir a transição cultural sem rupturas.</li>
+    <li><strong>Metodologia Ágil em Squads:</strong> Formação de grupos multidisciplinares com foco em metas específicas (Squad de Vendas & Omnichannel, Squad de CX & Pós-Venda, Squad de Gente & Gestão).</li>
+    <li><strong>Projetos-Piloto:</strong> Implementação das novas diretrizes em ambiente controlado (loja-piloto) antes do desdobramento geral para toda a rede.</li>
+  </ul>
+
+  <h3 class="sub-title">Etapa 5: Monitoramento Contínuo, Sustentação e Encerramento Formal</h3>
+  <ul>
+    <li><strong>Gestão à Vista:</strong> Instalação de dashboards executivos com indicadores de desempenho (KPIs) monitorados semanalmente.</li>
+    <li><strong>Instituição do Ciclo PDCA:</strong> Rotinas periódicas de análise de desvios e aplicação imediata de contramedidas corretivas.</li>
+    <li><strong>Transferência de Conhecimento e POPs:</strong> Criação de Procedimentos Operacionais Padrão e treinamento de multiplicadores internos para assegurar a autonomia plena da empresa após o encerramento do contrato.</li>
+  </ul>
+
+  <div class="page-break"></div>
+
+  <!-- Questão 2 -->
+  <h2 class="section-title">3. Questão Prática 2: Identificação de Causas-Raiz e Soluções Eficazes</h2>
+  <p>
+    Para solucionar a crise da Empresa XYZ, o consultor deve evitar soluções paliativas superficiais, utilizando metodologias analíticas robustas para identificar a causa fundamental de cada sintoma.
+  </p>
+
+  <h3 class="sub-title">A) Métodos de Identificação de Causa-Raiz</h3>
+  <ul>
+    <li><strong>Diagrama de Ishikawa (Espinha de Peixe / 6M):</strong> Mapeia as variáveis estruturais causadoras dos problemas:
+      <br/>• <em>Método:</em> Processos de SAC lentos e política burocrática de trocas;
+      <br/>• <em>Mão de Obra:</em> Vendedores sem treinamento técnico, liderança rígida e falta de plano de carreira;
+      <br/>• <em>Máquina/Tecnologia:</em> Falta de plataforma de e-commerce e sistema de CRM desatualizado;
+      <br/>• <em>Material:</em> Mix de eletrônicos desatualizado e compras sem embasamento de dados;
+      <br/>• <em>Medição:</em> Metas puramente volumétricas desprovidas de foco na satisfação do consumidor.
+    </li>
+    <li><strong>Técnica dos 5 Porquês:</strong> Identifica que a raiz da alta rotatividade está ligada ao estresse de lidar com clientes descontentes com produtos defeituosos ou obsoletos, combinado com a falta de autonomia da equipe e comissões inatingíveis.</li>
+    <li><strong>Princípio de Pareto (Regra 80/20):</strong> Revela que aproximadamente 80% das reclamações estão concentradas em apenas dois fatores: morosidade no processo de garantia e falta de informações técnicas precisas durante o ato da compra.</li>
+  </ul>
+
+  <h3 class="sub-title">B) Matriz de Soluções Estratégicas Recomendadas</h3>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 22%;">Desafio Crítico</th>
+        <th style="width: 38%;">Causas-Raiz Identificadas</th>
+        <th style="width: 40%;">Soluções Eficazes Desenvolvidas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1. Baixas Vendas</strong></td>
+        <td>
+          • Canal exclusivamente físico (sem presença digital);<br/>
+          • Atendimento transacional e pouco consultivo;<br/>
+          • Perda de vendas para o e-commerce concorrente.
+        </td>
+        <td>
+          • <strong>Modelo Omnichannel:</strong> Plataforma híbrida ("Clique & Retire" na loja física);<br/>
+          • <strong>Venda Consultiva:</strong> Capacitação de vendedores para atendimento técnico de alta especialização;<br/>
+          • <strong>Venda Agregada:</strong> Venda de serviços e acessórios (garantia estendida, seguro, suportes e configuração).
+        </td>
+      </tr>
+      <tr>
+        <td><strong>2. Reclamações de Clientes</strong></td>
+        <td>
+          • Burocracia excessiva para trocas e assistência técnica;<br/>
+          • Falta de autonomia do atendente no primeiro contato;<br/>
+          • Inexistência de canal ágil de suporte pós-venda.
+        </td>
+        <td>
+          • <strong>Política "Troca Sem Fricção":</strong> Troca imediata na loja para defeitos relatados até 30 dias;<br/>
+          • <strong>SAC Ágil via WhatsApp:</strong> Resolução de dúvidas em menos de 5 minutos;<br/>
+          • <strong>Auditoria de Fornecedores:</strong> Suspensão de fabricantes com alto índice de defeitos.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>3. Alta Rotatividade (Turnover)</strong></td>
+        <td>
+          • Metas irreais e ausência de plano de carreira;<br/>
+          • Sobrecarga emocional devido a atritos com clientes;<br/>
+          • Clima organizacional fragilizado e liderança reativa.
+        </td>
+        <td>
+          • <strong>Plano de Cargos, Carreiras e Salários (PCCR):</strong> Critérios de crescimento técnico e liderança;<br/>
+          • <strong>Comissão Balanceada:</strong> Bônus atrelado à qualidade de atendimento (NPS individual/equipe);<br/>
+          • <strong>Programa de Integração (Onboarding):</strong> Acompanhamento e mentoria nos primeiros 90 dias.
+        </td>
+      </tr>
+      <tr>
+        <td><strong>4. Falta de Inovação</strong></td>
+        <td>
+          • Compras baseadas em intuição sem análise de tendências;<br/>
+          • Dependência de linhas tradicionais de baixo valor;<br/>
+          • Falta de experimentação de produtos na loja.
+        </td>
+        <td>
+          • <strong>Comitê de Inovação & Curadoria:</strong> Foco em IoT (Casa Inteligente), periféricos gamers e áudio premium;<br/>
+          • <strong>Bancadas de Experiência (Live Demo):</strong> Espaços interativos para os clientes testarem aparelhos;<br/>
+          • <strong>Compras Ágeis (MVP):</strong> Lotes reduzidos para validação rápida de aceitação no mercado.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Questão 3 -->
+  <h2 class="section-title">4. Questão Prática 3: Implementação Bem-Sucedida e Sustentabilidade</h2>
+  <p>
+    Para transformar o plano estratégico em realidade duradoura, a consultoria deve estruturar a governança da execução em <strong>três frentes integradas</strong>:
+  </p>
+
+  <h3 class="sub-title">A) Gestão da Mudança e Engajamento Humano (Modelo Kotter)</h3>
+  <ul>
+    <li><strong>Alinhamento e Senso de Urgência:</strong> Apresentar à equipe os dados que comprovam a necessidade da evolução e como o sucesso da empresa protege o emprego e aumenta os ganhos de todos.</li>
+    <li><strong>Coalizão de Líderes e Embaixadores:</strong> Selecionar colaboradores influentes da própria operação para liderarem a transição no chão de loja.</li>
+    <li><strong>Vitórias de Curto Prazo (Quick Wins):</strong> Implementar melhorias rápidas no primeiro mês (ex.: simplificação de telas de PDV e ambiente de descompressão para os funcionários), aumentando a confiança no processo.</li>
+  </ul>
+
+  <h3 class="sub-title">B) Governança Operacional e Plano de Ação 5W2H</h3>
+  <p>Cada projeto é formalmente registrado com metas, responsáveis, cronograma e custos:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Ação (What)</th>
+        <th>Por que? (Why)</th>
+        <th>Responsável (Who)</th>
+        <th>Prazo (When)</th>
+        <th>Como será feito? (How)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Novo Canal de SAC e Trocas</strong></td>
+        <td>Reduzir fricção e queixas</td>
+        <td>Gerente de CX + Consultor</td>
+        <td>30 dias</td>
+        <td>Plataforma de WhatsApp + protocolo simplificado de devolução</td>
+      </tr>
+      <tr>
+        <td><strong>Renovação do Portfólio (IoT/Gamer)</strong></td>
+        <td>Atrair novos públicos</td>
+        <td>Diretoria de Compras</td>
+        <td>60 dias</td>
+        <td>Parcerias diretas com distribuidores autorizados e estandes interativos</td>
+      </tr>
+      <tr>
+        <td><strong>PCCR e Comissão com NPS</strong></td>
+        <td>Reter talentos e motivar equipe</td>
+        <td>Consultor de RH + Diretoria</td>
+        <td>45 dias</td>
+        <td>Remuneração variável transparente vinculada a faturamento e satisfação</td>
+      </tr>
+      <tr>
+        <td><strong>Capacitação Técnica Continuada</strong></td>
+        <td>Aumentar ticket médio e conversão</td>
+        <td>Líderes de Loja</td>
+        <td>Quinzenal</td>
+        <td>Treinamentos práticos de 1 hora com demonstração dos lançamentos</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub-title">C) Painel de Indicadores de Desempenho (Dashboard Executivo)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Perspectiva</th>
+        <th>Indicador-Chave (KPI)</th>
+        <th>Situação Inicial</th>
+        <th>Meta (180 Dias)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Comercial</strong></td>
+        <td>Faturamento Mensal / Margem Bruta</td>
+        <td>R$ 380 mil / 14%</td>
+        <td><strong>R$ 520 mil / 22%</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Experiência (CX)</strong></td>
+        <td>Net Promoter Score (NPS)</td>
+        <td>18 (Zona Crítica)</td>
+        <td><strong>68 (Zona de Qualidade)</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Atendimento</strong></td>
+        <td>Taxa de Reclamações sobre Vendas</td>
+        <td>14,2%</td>
+        <td><strong>Inferior a 2,5%</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Pessoas</strong></td>
+        <td>Taxa de Turnover Mensal</td>
+        <td>11,5% ao mês</td>
+        <td><strong>Inferior a 2,8% ao mês</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Inovação</strong></td>
+        <td>Participação de Lançamentos na Receita</td>
+        <td>4% do faturamento</td>
+        <td><strong>Mínimo de 28% do faturamento</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="sub-title">D) Sustentação Operacional e Saída Planejada da Consultoria</h3>
+  <ul>
+    <li><strong>Rituais PDCA:</strong> Reuniões quinzenais de análise de desvios com tomada rápida de contramedidas;</li>
+    <li><strong>Biblioteca de POPs:</strong> Manuais detalhados padronizando processos de atendimento, trocas, compras e pós-venda;</li>
+    <li><strong>Auditorias Trimestrais de Follow-up:</strong> Revisões formais em 30, 60, 90 e 180 dias após o término da consultoria para assegurar a autonomia dos líderes internos.</li>
+  </ul>
+
+  <!-- Conclusão -->
+  <h2 class="section-title">5. Conclusão</h2>
+  <p>
+    A solução estruturada demonstra que a recuperação da <strong>Empresa XYZ</strong> depende de uma abordagem integrada. Não se tratava apenas de "vender mais", mas sim de construir um ecossistema sustentável onde colaboradores motivados e capacitados oferecem produtos inovadores com um atendimento humanizado e ágil, transformando clientes insatisfeitos em defensores leais da marca.
+  </p>
+
+  <!-- Referências -->
+  <h2 class="section-title">6. Referências Bibliográficas (Normas ABNT)</h2>
+  <ul>
+    <li>CHIAVENATO, Idalberto. <em>Gestão de Pessoas: o novo papel dos recursos humanos nas organizações.</em> 4. ed. Barueri: Manole, 2014.</li>
+    <li>KAPLAN, Robert S.; NORTON, David P. <em>A Estratégia em Ação: Balanced Scorecard.</em> 22. ed. Rio de Janeiro: Elsevier, 1997.</li>
+    <li>KOTLER, Philip; ARMSTRONG, Gary. <em>Princípios de Marketing.</em> 16. ed. São Paulo: Pearson Education do Brasil, 2015.</li>
+    <li>KOTTER, John P. <em>Liderando Mudanças.</em> 2. ed. Rio de Janeiro: Alta Books, 2017.</li>
+    <li>KUBR, Milan. <em>Management Consulting: A guide to the profession.</em> 4. ed. Genebra: International Labour Office (ILO), 2002.</li>
+    <li>SLACK, Nigel; BRANDON-JONES, Alistair; JOHNSTON, Robert. <em>Administração da Produção.</em> 8. ed. São Paulo: Atlas, 2018.</li>
+  </ul>
+
+  <!-- Assinatura -->
+  <div class="footer-sign">
+    <div><strong>Wallax Figueiredo</strong></div>
+    <div>Acadêmico de Engenharia da Computação — Centro Universitário UniFatecie</div>
+    <div style="font-size: 8.5pt; color: #64748b; margin-top: 2px;">Projeto Integrador III • Ano Letivo 2026</div>
+  </div>
+
+</div>
+
+</body>
+</html>
